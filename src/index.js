@@ -1,17 +1,14 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
-import Main from './Main.js'
-
+import Main from './Main';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDom.render(
-  <BrowserRouter>
-  	<Main />
-  </BrowserRouter>,
+ReactDOM.render(
+  <Router>
+    <Main />
+  </Router>,
   document.getElementById('root')
 );
-
 registerServiceWorker();
