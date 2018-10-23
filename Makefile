@@ -4,7 +4,7 @@ version=1.0.0
 
 .PHONY:build
 build:
-	yarn build && \
+	yarn build
 	docker image build \
 		-t ${repo}/${name}:${version} .
 
