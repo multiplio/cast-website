@@ -1,8 +1,9 @@
-import React from 'react';
+import React from 'react'
+import { Provider } from 'mobx-react'
 
-import { storiesOf } from '@storybook/react';
-// import { action } from '@storybook/addon-actions';
-// import { linkTo } from '@storybook/addon-links';
+import { storiesOf } from '@storybook/react'
+// import { action } from '@storybook/addon-actions'
+// import { linkTo } from '@storybook/addon-links'
 
 import LoginView from '../src/Views/Login'
 
@@ -16,10 +17,16 @@ storiesOf('Login', module)
     () => <Login/>
   )
   .add('view - logged in',
-    () => <LoginView user={{displayName: "username", pictureLink: null}}/>
+    () =>
+    <Provider user={{displayName: "username", pictureLink: "https://pbs.twimg.com/profile_images/994968298663174145/uE6xzH0m_bigger.jpg"}}>
+      <LoginView/>
+    </Provider>
   )
   .add('view - logged out',
-    () => <LoginView user={{displayName: null, pictureLink: null}}/>
+    () =>
+    <Provider user={{displayName: null, pictureLink: null}}>
+      <LoginView/>
+    </Provider>
   );
 
 storiesOf('Post', module)
@@ -32,12 +39,18 @@ storiesOf('Post', module)
 
 storiesOf('Header', module)
   .add('header',
-    () => <Header/>
+    () =>
+    <Provider user={{displayName: "username", pictureLink: "https://pbs.twimg.com/profile_images/994968298663174145/uE6xzH0m_bigger.jpg"}}>
+      <Header/>
+    </Provider>
   );
 
 storiesOf('ProfileButton', module)
-  .add('profileButton',
-    () => <ProfileButton/>
+  .add('profileButton - logged in',
+    () => <ProfileButton user={{displayName: "username", pictureLink: "https://pbs.twimg.com/profile_images/994968298663174145/uE6xzH0m_bigger.jpg"}}/>
+  )
+  .add('profileButton - logged out',
+    () => <ProfileButton user={{displayName: null, pictureLink: null}}/>
   );
 
 // storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
