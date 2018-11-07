@@ -6,12 +6,9 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        Login to continue
-
         {/* Sharingbutton Twitter */}
         <a
           href={process.env.REACT_APP_TWITTER_LOGIN_PATH}
-          target="_blank"
           className="resp-sharing-button__link"
           aria-label="Connect with Twitter">
           <div className="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--large">
