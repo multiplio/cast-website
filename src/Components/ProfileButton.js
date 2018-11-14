@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 import { observer, inject } from 'mobx-react'
+import { Link } from 'react-router-dom'
 
 import pallete from '../Styles/pallete';
 
@@ -15,11 +16,13 @@ class ProfileButton extends Component {
               this.props.user.displayName !== null
               ?
               <div className={css(this.props.styles, styles.container)}>
-                profile image
+                <Link to="/me">
+                  <img alt="profile" src={ this.props.user.pictureLink } />
+                </Link>
               </div>
               :
               <div className={css(this.props.styles, styles.container)}>
-                Log in
+                <Link to="/login">Log in</Link>
               </div>
             )
             :
