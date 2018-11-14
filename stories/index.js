@@ -7,10 +7,13 @@ import { storiesOf } from '@storybook/react'
 
 import LoginView from '../src/Views/Login'
 
-import Login from '../src/Components/Login.js'
-import Post from '../src/Components/PostInput.js'
-import Header from '../src/Components/Header.js'
-import ProfileButton from '../src/Components/ProfileButton.js'
+import Login from '../src/Components/Login'
+import User from '../src/Components/User'
+import Post from '../src/Components/PostInput'
+import Header from '../src/Components/Header'
+import ProfileButton from '../src/Components/ProfileButton'
+
+import {userIn, userOut} from './userPlaceholders'
 
 storiesOf('Login', module)
   .add('button',
@@ -18,13 +21,13 @@ storiesOf('Login', module)
   )
   .add('view - logged in',
     () =>
-    <Provider user={{displayName: "username", pictureLink: "https://pbs.twimg.com/profile_images/994968298663174145/uE6xzH0m_bigger.jpg"}}>
+    <Provider user={userIn}>
       <LoginView/>
     </Provider>
   )
   .add('view - logged out',
     () =>
-    <Provider user={{displayName: null, pictureLink: null}}>
+    <Provider user={userOut}>
       <LoginView/>
     </Provider>
   );
@@ -40,17 +43,37 @@ storiesOf('Post', module)
 storiesOf('Header', module)
   .add('header',
     () =>
-    <Provider user={{displayName: "username", pictureLink: "https://pbs.twimg.com/profile_images/994968298663174145/uE6xzH0m_bigger.jpg"}}>
+    <Provider user={userIn}>
       <Header/>
     </Provider>
   );
 
 storiesOf('ProfileButton', module)
   .add('profileButton - logged in',
-    () => <ProfileButton user={{displayName: "username", pictureLink: "https://pbs.twimg.com/profile_images/994968298663174145/uE6xzH0m_bigger.jpg"}}/>
+    () =>
+    <ProfileButton
+      user={userIn}
+    />
   )
   .add('profileButton - logged out',
-    () => <ProfileButton user={{displayName: null, pictureLink: null}}/>
+    () =>
+    <ProfileButton
+      user={userOut}
+    />
+  );
+
+storiesOf('User', module)
+  .add('user - logged in',
+    () =>
+    <User
+      user={userIn}
+    />
+  )
+  .add('user - logged out',
+    () =>
+    <User
+      user={userOut}
+    />
   );
 
 // storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
