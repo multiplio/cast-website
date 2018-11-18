@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Provider } from 'mobx-react'
 
-//Views
+// Views
 import Home from './Views/Home'
 import Login from './Views/Login'
 import Profile from './Views/Profile'
@@ -10,12 +10,11 @@ import Post from './Views/Post'
 import PP from './Views/PrivacyPolicy'
 import TOS from './Views/TermsOfUse'
 
-//State
+// States
 import user from './States/User'
-user.loadUser()
 
 export default class Main extends Component {
-  render() {
+  render () {
     return (
       <main>
 
@@ -36,3 +35,4 @@ export default class Main extends Component {
     )
   }
 }
+

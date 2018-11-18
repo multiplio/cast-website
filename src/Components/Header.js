@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import React, { Component } from 'react'
+import { StyleSheet, css } from 'aphrodite'
 
-import pallete from '../Styles/pallete';
+import pallete from '../Styles/pallete'
 
-import ProfileButton from '../Components/ProfileButton';
+import ProfileButton from '../Components/ProfileButton'
 
 export default class Header extends Component {
-  render() {
+  render () {
     return (
       <div className={css(styles.header)}>
         header
         <ProfileButton styles={styles.profile}/>
       </div>
-    );
+    )
   }
 }
 
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   profile: {
     float: 'right',
   },
-});
+})

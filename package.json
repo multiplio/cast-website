@@ -19,18 +19,18 @@
     "@types/storybook__react": "^3.0.9",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
     "react-scripts": "1.1.4",
     "sw-precache": "^5.2.1"
   },
-  "proxy": {
-    "/auth/twitter": {
-      "target": "http://localhost:7000"
-    },
-    "/identity": {
-      "target": "http://localhost:7000"
-    }
-  },
   "scripts": {
+    "lint": "eslint .eslintrc.js ./src/*.js ./src/Components/*.js ./src/States/*.js ./src/Views/*.js",
     "start": "react-scripts start",
     "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
     "test": "react-scripts test --env=jsdom",

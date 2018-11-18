@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import './Login.css'
 
 export default class Login extends Component {
-  render() {
+  render () {
     return (
       <div>
         {/* Sharingbutton Twitter */}
@@ -22,6 +22,6 @@ export default class Login extends Component {
         </a>
 
       </div>
-    );
+    )
   }
 }

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-import Header from "../Components/Header.js";
+import Header from '../Components/Header.js'
 
 export default class Home extends Component {
-  render() {
+  render () {
     return (
       <div>
         <Header/>
@@ -14,17 +14,25 @@ export default class Home extends Component {
 
           <Link to="/login">Login</Link>
 
-          <h1>Beta</h1>
+          <h5>Beta</h5>
+
           <p>Take ownership of your content.</p>
           <p>Content as content, publishers as consumers.</p>
+          <p>State of the art technology - Solid</p>
+          <p>Easy to use</p>
+
           <ul>
             <li>Hassle free</li>
             <li>Platform agnostic</li>
             <li>Transparent</li>
             <li>State of the art</li>
           </ul>
+
+          planned interoperability - Solid / IPFS
+          freedom of data
+
         </div>
       </div>
-    );
+    )
   }
 }
