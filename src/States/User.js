@@ -1,53 +1,48 @@
-import { observable, action, decorate } from "mobx"
+import { observable, action, decorate } from 'mobx'
 
 class User {
-  constructor() {
+  constructor () {
+    // observables
     this.loaded = false
     this.displayName = null
     this.pictureLink = null
 
+    // load
     this.loadUser()
   }
 
-  //observables
-  loaded
-  displayName
-  pictureLink
-
-  //actions
-  setUser(name, link) {
+  // actions
+  setUser (name, link) {
     this.loaded = true
     this.displayName = name
     this.pictureLink = link
   }
-  loadUser() {
+  loadUser () {
     fetch(process.env.REACT_APP_GET_IDENTITY_PATH)
       .then(response =>
         response.json()
       )
       .then(json =>
         this.setUser(
-          json.displayName     || null,
+          json.displayName || null,
           json.profileImageUrl || null
         )
       )
-      .catch(err => {
-        this.setUser(
-          null,
-          null
-        )
-      })
+      .catch(_ =>
+        this.setUser(null, null)
+      )
   }
 }
 decorate(User, {
-  //observables
+  // observables
   loaded: observable,
   displayName: observable,
   pictureLink: observable,
 
-  //actions
+  // actions
   setUser: action,
   loadUser: action,
 })
 const user = new User()
 export default user
+

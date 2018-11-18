@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 
 import LoginC from '../Components/Login.js'
@@ -29,4 +30,8 @@ class Login extends Component {
     )
   }
 }
+Login.propTypes = {
+  user: PropTypes.object,
+}
 export default inject('user')(observer(Login))
+

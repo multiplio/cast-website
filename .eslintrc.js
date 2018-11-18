@@ -17,6 +17,7 @@ module.exports = {
     "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
+		"operator-linebreak": "off",
   },
   "extends": [
     "eslint:recommended",

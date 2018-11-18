@@ -30,7 +30,7 @@
     "sw-precache": "^5.2.1"
   },
   "scripts": {
-    "lint": "eslint .eslintrc.js ./src/*.js ./src/Components/*.js ./src/States/*.js ./src/Views/*.js",
+    "lint": "eslint -c .eslintrc.js ./src/*.js ./src/Components/*.js ./src/States/*.js ./src/Views/*.js --ignore-pattern registerServiceWorker.js",
     "start": "react-scripts start",
     "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
     "test": "react-scripts test --env=jsdom",
