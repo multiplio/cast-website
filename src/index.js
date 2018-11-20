@@ -6,10 +6,6 @@ import Main from './Main'
 
 import registerServiceWorker from './registerServiceWorker'
 
-// States
-import user from './States/User'
-user.loadUser()
-
 // Render
 ReactDOM.render(
   <Router>
@@ -21,3 +17,4 @@ ReactDOM.render(
 
 // Service worker
 registerServiceWorker()
+
