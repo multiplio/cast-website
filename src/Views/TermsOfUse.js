@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 export default class TermsOfUse extends Component {
+  componentDidMount () {
+    document.title = 'QuackUp - Terms of Use'
+  }
   render () {
     return (
       <div>

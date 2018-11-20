@@ -5,6 +5,9 @@ import Header from '../Components/Header.js'
 import User from '../Components/User.js'
 
 export default class Home extends Component {
+  componentDidMount () {
+    document.title = 'QuackUp - my profile'
+  }
   render () {
     return (
       <div>
@@ -22,3 +25,4 @@ export default class Home extends Component {
     )
   }
 }
+

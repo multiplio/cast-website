@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 export default class PrivacyPolicy extends Component {
+  componentDidMount () {
+    document.title = 'QuackUp - Privacy Policy'
+  }
   render () {
     return (
       <div>

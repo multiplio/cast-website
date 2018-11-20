@@ -6,6 +6,9 @@ import LoginC from '../Components/Login.js'
 import Header from '../Components/Header.js'
 
 class Login extends Component {
+  componentDidMount () {
+    document.title = 'QuackUp - login'
+  }
   render () {
     return (
       <div>
