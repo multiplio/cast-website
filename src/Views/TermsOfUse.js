@@ -37,7 +37,7 @@ export default class TermsOfUse extends Component {
         <h3>7. Modifications</h3>
         <p>tekwrks may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
         <h3>8. Governing Law</h3>
-        <p>These terms and conditions are governed by and construed in accordance with the laws of Netherlands and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
+        <p>These terms and conditions are governed by and construed in accordance with the laws of the United States of America and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
       </div>
     )
   }
