@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import Header from '../Components/Header.js'
+import Header from '../Components/Header'
+import Cookie from '../Components/CookieNotice'
 
 export default class Home extends Component {
   componentDidMount () {
@@ -10,7 +11,7 @@ export default class Home extends Component {
   render () {
     return (
       <div>
-        <Header/>
+        <Header />
 
         <div className="content">
           This is the home page.
@@ -35,7 +36,10 @@ export default class Home extends Component {
           freedom of data
 
         </div>
+
+        <Cookie />
       </div>
     )
   }
 }
+

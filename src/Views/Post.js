@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
 
 import Header from '../Components/Header'
-import User from '../Components/User'
+import PostInput from '../Components/PostInput'
 import Cookie from '../Components/CookieNotice'
 
-export default class Home extends Component {
+export default class Post extends Component {
   componentDidMount () {
-    document.title = 'QuackUp - my profile'
+    document.title = 'QuackUp - post'
   }
   render () {
     return (
@@ -15,15 +14,13 @@ export default class Home extends Component {
         <Header/>
 
         <div className="content">
-          This is the profile page.
+          This is the post page.
 
-          <User/>
-
-          <a href="/logout">Log out</a>
+          <PostInput/>
 
         </div>
 
-        <Cookie/>
+        <Cookie />
       </div>
     )
   }
