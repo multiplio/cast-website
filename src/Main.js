@@ -12,13 +12,14 @@ import TOS from './Views/TermsOfUse'
 
 // States
 import user from './States/User'
+import webpage from './States/Webpage'
 
 export default class Main extends Component {
   render () {
     return (
       <main>
 
-        <Provider user={user}>
+        <Provider user={user} webpage={webpage}>
 
           <Switch>
             <Route exact path='/' component={Home} />

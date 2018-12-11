@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react'
 import Login from '../src/Components/Login'
 import LoginView from '../src/Views/Login'
 
-import {userIn, userOut} from './userPlaceholders'
+import { userIn, userOut } from './userPlaceholders'
 
 storiesOf('Login', module)
   .addDecorator(story => (
@@ -19,13 +19,14 @@ storiesOf('Login', module)
   )
   .add('view - logged in',
     () =>
-    <Provider user={userIn}>
-      <LoginView/>
-    </Provider>
+      <Provider user={userIn}>
+        <LoginView/>
+      </Provider>
   )
   .add('view - logged out',
     () =>
-    <Provider user={userOut}>
-      <LoginView/>
-    </Provider>
-  );
+      <Provider user={userOut}>
+        <LoginView/>
+      </Provider>
+  )
+
