@@ -28,10 +28,10 @@ class Login extends Component {
     </div>
 
     return (
-      <div className={css(styles.view)}>
+      <div className={css(styles.container)}>
         <Header/>
 
-        <div className={css(styles.container)}>
+        <div className={css(styles.view)}>
           <h1>Login</h1>
 
           {
@@ -55,11 +55,11 @@ Login.propTypes = {
 export default inject('user')(observer(Login))
 
 const styles = StyleSheet.create({
-  view: {
+  container: {
     height: '100%',
     backgroundColor: pallete.blue,
   },
-  container: {
+  view: {
     margin: 0,
     display: 'flex',
     'align-items': 'center',

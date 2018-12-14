@@ -18,9 +18,9 @@ class CookieNotice extends Component {
           <div className={css(styles.text)}>
             This webpage uses cookies. By continuing, you agree to their use. We will never use them to track you.
           </div>
-          <div 
+          <div
             className={css(styles.dismiss)}
-            onClick={(event) => {webpage.acceptCookies()}}>
+            onClick={ (event) => webpage.acceptCookies() }>
             Got it!
           </div>
         </div>
