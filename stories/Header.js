@@ -13,10 +13,16 @@ storiesOf('Header', module)
       { story() }
     </MemoryRouter>
   ))
-  .add('header',
+  .add('header - logged in',
     () =>
-    <Provider user={userIn}>
-      <Header/>
-    </Provider>
-  );
+      <Provider user={userIn}>
+        <Header/>
+      </Provider>
+  )
+  .add('header - logged out',
+    () =>
+      <Provider user={userOut}>
+        <Header/>
+      </Provider>
+  )
 

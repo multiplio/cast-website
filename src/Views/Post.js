@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { StyleSheet, css } from 'aphrodite'
 
 import Header from '../Components/Header'
 import PostInput from '../Components/PostInput'
+import Button from '../Components/PostButton.js'
 import Cookie from '../Components/CookieNotice'
 
 export default class Post extends Component {
@@ -10,13 +12,13 @@ export default class Post extends Component {
   }
   render () {
     return (
-      <div>
+      <div className={css(styles.container)}>
         <Header/>
 
-        <div className="content">
-          This is the post page.
+        <div className={css(styles.view)}>
 
-          <PostInput/>
+          <PostInput />
+          <Button>Post</Button>
 
         </div>
 
@@ -25,4 +27,16 @@ export default class Post extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+  },
+  view: {
+    display: 'flex',
+    'padding-top': '1rem',
+    'flex-direction': 'column',
+    'align-items': 'center',
+  },
+})
 

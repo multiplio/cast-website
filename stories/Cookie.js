@@ -7,12 +7,12 @@ import Cookie from '../src/Components/CookieNotice'
 import { fresh, accepted } from './webpagePlaceholders'
 
 storiesOf('Cookie', module)
-  .add('notice', () => 
+  .add('notice', () =>
     <Provider webpage={fresh}>
       <Cookie />
     </Provider>
   )
-  .add('accepted', () => 
+  .add('accepted', () =>
     <Provider webpage={accepted}>
       <Cookie />
     </Provider>
