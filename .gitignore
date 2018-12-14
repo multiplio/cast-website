@@ -1,4 +1,5 @@
 .env*
+.image-timestamp
 
 /node_modules
 /coverage
