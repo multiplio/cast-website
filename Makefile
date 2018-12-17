@@ -3,13 +3,15 @@ repo=quackup
 name=website
 version=1.0.0
 
-build: .image-timestamp
+all: Makefile .image-timestamp
+	@touch .image-timestamp
+
+build: src/ sw-precache-config.js package.json yarn.lock
 	yarn build
+
+.image-timestamp: build Dockerfile public/
 	docker image build \
 		-t ${repo}/${name}:${version} .
-
-.image-timestamp: src/ public/ Dockerfile Makefile node_modules/ sw-precache-config.js package.json yarn.lock
-	@touch .image-timestamp
 
 .PHONY:run
 run:
