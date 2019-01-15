@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, css } from 'aphrodite'
 
+import ContentEditor from './ContentEditor'
+
 // import pallete from '../Styles/pallete'
 
 export default class PostInput extends Component {
@@ -11,7 +13,7 @@ export default class PostInput extends Component {
         <div className={css(styles.image)}>
           <img
             className={css(styles.picture)}
-            src="https://pbs.twimg.com/profile_images/994968298663174145/uE6xzH0m_bigger.jpg"
+            src="https://pbs.twimg.com/profile_images/648888480974508032/66_cUYfj_400x400.jpg"
             alt="profile" />
         </div>
         <div className={css(styles.name)}>
@@ -20,14 +22,19 @@ export default class PostInput extends Component {
         </div>
         <div className={css(styles.text)}>Some title of the post... #hashtags and #stuff</div>
         <div className={css(styles.content)}>
-          <div>
-            Arguing that you don&apos;t care about the
-            right to privacy because you have
-            nothing to hide is no different from
-            saying you don&apos;t care about free speech
-            because you have nothing to say.
-            - Edward Snowden
-          </div>
+        <div className={css(styles.contentInner)}>
+          <ContentEditor
+            edit={this.props.edit}
+            text={
+'Arguing that you don\'t care about the\n' +
+'right to privacy because you have\n' +
+'nothing to hide is no different from\n' +
+'saying you don\'t care about free speech\n' +
+'because you have nothing to say.\n' +
+'- Edward Snowden'
+            }
+          />
+        </div>
         </div>
       </div>
     )
@@ -93,9 +100,19 @@ const styles = StyleSheet.create({
     'grid-area': 'content',
     border: '1px solid #bbb',
     'margin-top': '10px',
-    'font-size': '20px',
-    padding: '10px 0px',
-    textAlign: 'center',
+    position: 'relative',
+    width: '100%',
+    'padding-bottom': '50%',
+  },
+  contentInner: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    display: 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'center',
   },
 
   post: {
