@@ -11,14 +11,14 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.4.10",
-    "@storybook/addon-links": "^3.4.10",
-    "@storybook/addons": "^3.4.10",
-    "@storybook/react": "^3.4.10",
+    "@storybook/addon-actions": "^4.1.6",
+    "@storybook/addon-links": "^4.1.6",
+    "@storybook/addons": "^4.1.6",
+    "@storybook/react": "^4.1.6",
     "@types/react": "^16.4.18",
     "@types/storybook__react": "^3.0.9",
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0",
+    "babel-core": "^7.0.0",
+    "babel-runtime": "^7.0.0",
     "eslint": "^5.9.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
@@ -27,10 +27,11 @@
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-standard": "^4.0.0",
     "react-scripts": "1.1.4",
-    "sw-precache": "^5.2.1"
+    "sw-precache": "^5.2.1",
+    "babel-loader": "^8.0.5"
   },
   "scripts": {
-    "lint": "eslint -c .eslintrc.js ./src/*.js ./src/Components/*.js ./src/States/*.js ./src/Views/*.js --ignore-pattern registerServiceWorker.js",
+    "lint": "eslint -c .eslintrc.js ./src/*.js ./src/Components/*.js ./src/States/*.js ./src/Views/*.js --ignore-pattern src/registerServiceWorker.js",
     "start": "react-scripts start",
     "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
     "test": "react-scripts test --env=jsdom",

@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:10-alpine
 
 # Install yarn
 RUN npm install --global yarn
@@ -19,6 +19,6 @@ RUN set -ex; \
 COPY build/ ./
 
 # Start
-EXPOSE 7001
+EXPOSE 7000
 USER node
-ENTRYPOINT exec serve --single -p 7001 -n .
+ENTRYPOINT exec serve --single -p 7000 -n .
