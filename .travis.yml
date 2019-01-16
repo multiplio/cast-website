@@ -2,7 +2,7 @@ sudo: required
 
 language: node_js
 node_js:
-  - "8"
+  - '10'
 
 services:
   - docker
@@ -13,4 +13,8 @@ before_script:
 
 script:
   - make build
+
+notifications:
+  slack:
+    secure: D2tq+jXZGbZSVS7f8JJKxSa/xBvlj8o/hr7Q6yP6omaV1M/a6EWrK9zIWI4orm8ms6eGTKPi//9tXAYKZdkO/CGjTMUHDs5Wh6Om8/DFADKHGjgOuQEslxd2jAKTHZTdGbWMgXvEuIGb/rzQcrA64JS8pSFfe4pa1joigr1ag1BkHKPp71IjTzUvafhTgYE8cDVly2fPhoH3VeoJVgpgt0M4FEy2kOKaYSq0Uhrkp919qdNJkzbN22TjEdwlPkUxADGUfpHu7ZuZWGhI6b8Onep+8w2BeKjaS7a0oJonE2ok2toZHCv7fLxIbjFu9Vf+0M/StglHIq2Izdrryea7LV5J3L+Jx6iEsfvOK90p5vuA1ClIPkoDnwiZQ/QbHpeyqPmqK9oc6qOU6lOFYprvYVzicgbtMDlqauv4/w0yaoe4EiPAYxrct/OdwyDk+sIZAWB7jmRlBwoedzQX2nBGc5OP+Tc3PpJxDYNAtaShtly52hEh8GI/nDR4l417rJ8axpLoRPwB9ndOz3d1k5EXw64MgIqjLcHA0qmGgxVSJAQufB59AZNb54o1mlC15Liph3SPCztxnD5R3+4Tr4jmJnpEBGYk0x1n4Q9f7e3RcZIW4yoyi6EteDOZ8fiQRdkqrs9DqQrRGbpEL63ynUfYPxZIr8IMr3wLUjJ+UNKwQjA=
 
