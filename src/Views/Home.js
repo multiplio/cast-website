@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { observer, inject } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { StyleSheet, css } from 'aphrodite'
 
@@ -6,47 +8,59 @@ import { StyleSheet, css } from 'aphrodite'
 
 import Header from '../Components/Header'
 import Cookie from '../Components/CookieNotice'
+import Post from '../Components/PostInput'
 
-export default class Home extends Component {
+class Home extends Component {
   componentDidMount () {
     document.title = 'QuackUp'
   }
   render () {
+    const loggedIn =
+    <div>
+      <Post edit={true} />
+    </div>
+
+    const loggedOut =
+    <div>
+      This is the home page.
+      <Link to="/login">Login</Link>
+      <h3>Beta</h3>
+      Content is king
+
+      <p>Take ownership of your content.</p>
+      <p>Content as content, publishers as consumers.</p>
+      <p>State of the art technology - Solid</p>
+      <p>Easy to use</p>
+
+      <ul>
+        <li>Hassle free</li>
+        <li>Platform agnostic</li>
+        <li>Transparent</li>
+        <li>State of the art</li>
+      </ul>
+      <ol>
+        <li>Post your content</li>
+        <li>Selects platforms</li>
+        <li>Content is securelly saved</li>
+        <li>Links are posted to selected platforms</li>
+      </ol>
+      planned interoperability - IPFS
+      freedom of data
+    </div>
+
     return (
       <div className={css(styles.container)}>
         <Header />
 
         <div className={css(styles.view)}>
-          This is the home page.
-
-          <Link to="/login">Login</Link>
-
-          <h3>Beta</h3>
-
-          Content is king
-
-          <p>Take ownership of your content.</p>
-          <p>Content as content, publishers as consumers.</p>
-          <p>State of the art technology - Solid</p>
-          <p>Easy to use</p>
-
-          <ul>
-            <li>Hassle free</li>
-            <li>Platform agnostic</li>
-            <li>Transparent</li>
-            <li>State of the art</li>
-          </ul>
-
-          <ol>
-            <li>Post your content</li>
-            <li>Selects platforms</li>
-            <li>Content is securelly saved</li>
-            <li>Links are posted to selected platforms</li>
-          </ol>
-
-          planned interoperability - Solid / IPFS
-          freedom of data
-
+          {
+            this.props.user.loaded === true
+              ? (this.props.user.displayName !== null
+                ? loggedIn
+                : loggedOut
+              )
+              : null
+          }
         </div>
 
         <Cookie />
@@ -54,6 +68,10 @@ export default class Home extends Component {
     )
   }
 }
+Home.propTypes = {
+  user: PropTypes.object,
+}
+export default inject('user')(observer(Home))
 
 const styles = StyleSheet.create({
   container: {
