@@ -10,9 +10,20 @@ import Header from '../Components/Header'
 import Cookie from '../Components/CookieNotice'
 
 class Login extends Component {
+  constructor (props) {
+    super(props)
+
+    this.loginWithTwitter = this.loginWithTwitter.bind(this)
+  }
+
   componentDidMount () {
     document.title = 'QuackUp - login'
   }
+
+  loginWithTwitter () {
+    window.location.href = process.env.REACT_APP_TWITTER_LOGIN_PATH
+  }
+
   render () {
     const loggedIn =
     <div>
@@ -24,7 +35,11 @@ class Login extends Component {
     const loggedOut =
     <div>
       Login to continue
-      <LoginC/>
+      <LoginC
+        onClick={ this.loginWithTwitter }
+      >
+        Login with Twitter
+      </LoginC>
     </div>
 
     return (
