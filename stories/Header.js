@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react'
 
 import Header from '../src/Components/Header'
 
-import {userIn, userOut} from './userPlaceholders'
+import { userIn, userOut } from './userPlaceholders'
 
 storiesOf('Header', module)
   .addDecorator(story => (

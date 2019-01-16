@@ -16,7 +16,6 @@ class PostInput extends Component {
   }
 
   post () {
-    console.log('post')
   }
 
   render () {

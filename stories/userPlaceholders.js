@@ -1,6 +1,6 @@
 const userIn = {
   displayName: "username",
-  pictureLink: "https://pbs.twimg.com/profile_images/994968298663174145/uE6xzH0m_bigger.jpg",
+  pictureLink: "https://pbs.twimg.com/profile_images/648888480974508032/66_cUYfj_400x400.jpg",
   loaded: true,
 }
 

@@ -1,5 +1,6 @@
 /* eslint-disable */
 
+import home from './Home'
 import login from './Login'
 import post from './Post'
 import header from './Header'

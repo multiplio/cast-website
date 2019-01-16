@@ -7,6 +7,7 @@ import Login from '../src/Components/Login'
 import LoginView from '../src/Views/Login'
 
 import { userIn, userOut } from './userPlaceholders'
+import { accepted } from './webpagePlaceholders'
 
 storiesOf('Login', module)
   .addDecorator(story => (
@@ -19,13 +20,13 @@ storiesOf('Login', module)
   )
   .add('view - logged in',
     () =>
-      <Provider user={userIn}>
+      <Provider user={userIn} webpage={accepted}>
         <LoginView/>
       </Provider>
   )
   .add('view - logged out',
     () =>
-      <Provider user={userOut}>
+      <Provider user={userOut} webpage={accepted}>
         <LoginView/>
       </Provider>
   )

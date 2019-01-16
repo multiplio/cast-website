@@ -17,7 +17,11 @@ class ProfileButton extends Component {
             ?
             <div className={css(this.props.styles, styles.container)}>
               <Link to="/me">
-                <img alt="profile" src={ this.props.user.pictureLink } />
+                <img
+                  alt="profile"
+                  className={css(styles.image)}
+                  src={ this.props.user.pictureLink }
+                />
               </Link>
             </div>
             :
@@ -38,10 +42,13 @@ ProfileButton.propTypes = {
 export default inject('user')(observer(ProfileButton))
 
 const styles = StyleSheet.create({
-  container:
-  {
+  container: {
     border: ('2px solid ' + pallete.blue),
     display: 'inline',
+  },
+  image: {
+    width: '56px',
+    height: '56px',
   },
 })
 

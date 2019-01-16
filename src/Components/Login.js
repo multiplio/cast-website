@@ -26,6 +26,7 @@ const Login = ({ onClick, children }) => {
 }
 Login.propTypes = {
   children: PropTypes.string,
+  onClick: PropTypes.func,
 }
 export default Login
 
