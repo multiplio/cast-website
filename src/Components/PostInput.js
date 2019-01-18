@@ -12,10 +12,27 @@ class PostInput extends Component {
   constructor (props) {
     super(props)
 
+    this.postText = null
+    this.postTextRef = e => {
+      this.postText = e
+    }
+
     this.post = this.post.bind(this)
   }
 
   post () {
+    if (this.postText != null) {
+      console.log(this.postText.value)
+
+      fetch(process.env.REACT_APP_POST_PATH)
+        .then(response =>
+          response.json()
+        )
+        // .then(json =>
+        // )
+        // .catch(e =>
+        // )
+    }
   }
 
   render () {
@@ -34,22 +51,24 @@ class PostInput extends Component {
             </div>
             <div className={css(styles['name-handle'])}></div>
           </div>
-          <div className={css(styles.text)}>Some title of the post... #hashtags and #stuff</div>
+
+          <div className={css(styles.text)}>
+            Some title of the post... #hashtags and #stuff
+          </div>
 
           <div className={css(styles.content)}>
-            <div className={css(styles.contentInner)}>
-              <ContentEditor
-                edit={this.props.edit}
-                text={
-                  'Arguing that you don\'t care about the\n' +
-                  'right to privacy because you have\n' +
-                  'nothing to hide is no different from\n' +
-                  'saying you don\'t care about free speech\n' +
-                  'because you have nothing to say.\n' +
-                  '- Edward Snowden'
-                }
-              />
-            </div>
+            <ContentEditor
+              edit={this.props.edit}
+              text={
+                'Arguing that you don\'t care about the\n' +
+                'right to privacy because you have\n' +
+                'nothing to hide is no different from\n' +
+                'saying you don\'t care about free speech\n' +
+                'because you have nothing to say.\n' +
+                '- Edward Snowden'
+              }
+              innerRef={this.postTextRef}
+            />
           </div>
         </div>
 
@@ -134,16 +153,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: '100%',
     'padding-bottom': '50%',
-  },
-  contentInner: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    display: 'flex',
-    'flex-direction': 'column',
-    'justify-content': 'center',
   },
 
   post: {
