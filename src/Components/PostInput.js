@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import { StyleSheet, css } from 'aphrodite'
 
+import TextareaAutosize from 'react-autosize-textarea'
+
 import PostButton from '../Components/Login'
 import ContentEditor from './ContentEditor'
 
@@ -16,14 +18,16 @@ class PostInput extends Component {
     this.postTextRef = e => {
       this.postText = e
     }
+    this.postDesc = null
+    this.postDescRef = e => {
+      this.postDesc = e
+    }
 
     this.post = this.post.bind(this)
   }
 
   post () {
     if (this.postText != null) {
-      console.log(this.postText.value)
-
       fetch(process.env.REACT_APP_POST_PATH)
         .then(response =>
           response.json()
@@ -52,9 +56,14 @@ class PostInput extends Component {
             <div className={css(styles['name-handle'])}></div>
           </div>
 
-          <div className={css(styles.text)}>
-            Some title of the post... #hashtags and #stuff
-          </div>
+          <TextareaAutosize
+            disabled={!this.props.edit}
+            className={css(styles.text)}
+            defaultValue={'Description #hashtags ...'}
+            placeholder={'Description'}
+            innerRef={this.postDescRef}
+            maxRows={5}
+          />
 
           <div className={css(styles.content)}>
             <ContentEditor
@@ -142,8 +151,14 @@ const styles = StyleSheet.create({
 
   text: {
     'grid-area': 'text',
-    'margin-top': '4px',
     'text-align': 'left',
+    'font-size': '14px',
+    border: 'none',
+    margin: '4px 0 0 0',
+    padding: 0,
+    resize: 'none',
+    outline: 'none',
+    overflow: 'hidden',
   },
 
   content: {
