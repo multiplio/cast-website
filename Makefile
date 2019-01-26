@@ -6,7 +6,7 @@ version=1.0.0
 all: Makefile .image-timestamp
 	@touch .image-timestamp
 
-build: src/ sw-precache-config.js package.json yarn.lock
+build: src/ node_modules/ sw-precache-config.js package.json yarn.lock
 	yarn build
 
 .image-timestamp: build Dockerfile public/

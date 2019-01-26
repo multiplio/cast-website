@@ -2,28 +2,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, css } from 'aphrodite'
 
-import TextareaAutosize from 'react-autosize-textarea'
+import TextareaAutosize from 'react-textarea-autosize'
 
 // import pallete from '../Styles/pallete'
 
-const ContentEditor = ({ edit, text, innerRef }) => {
+const fontSize = 22
+
+const ContentEditor = ({ edit, value, onChange }) => {
   return (
     <div className={css(styles.container)}>
       <TextareaAutosize
         disabled={!edit}
         className={css(styles.textarea)}
-        defaultValue={text}
+        value={value}
+        onChange={onChange}
         placeholder={'Enter your post here.'}
-        innerRef={innerRef}
-        maxRows={50}
+        minRows={1}
+        maxRows={100}
+        autoFocus
+        style={{ fontSize: fontSize }}
       />
     </div>
   )
 }
 ContentEditor.propTypes = {
   edit: PropTypes.bool,
-  text: PropTypes.string,
-  innerRef: PropTypes.func,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 }
 export default ContentEditor
 
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
     'justify-content': 'center',
   },
   textarea: {
-    'font-size': '22px',
+    'font-size': fontSize + 'px',
     'line-height': '1.5em',
     'text-align': 'center',
     'white-space': 'pre-line',

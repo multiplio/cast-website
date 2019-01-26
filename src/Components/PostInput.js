@@ -1,47 +1,78 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import { StyleSheet, css } from 'aphrodite'
 
-import TextareaAutosize from 'react-autosize-textarea'
+import TextareaAutosize from 'react-textarea-autosize'
 
 import PostButton from '../Components/Login'
 import ContentEditor from './ContentEditor'
 
 // import pallete from '../Styles/pallete'
 
+const descFontSize = 14
+
 class PostInput extends Component {
   constructor (props) {
     super(props)
 
-    this.postText = null
-    this.postTextRef = e => {
-      this.postText = e
-    }
-    this.postDesc = null
-    this.postDescRef = e => {
-      this.postDesc = e
+    // data
+    this.state = {
+      content: '',
+      description: '',
+      sendStatus: null,
     }
 
+    // method bindings
     this.post = this.post.bind(this)
+    this.descriptionChange = this.descriptionChange.bind(this)
+    this.contentChange = this.contentChange.bind(this)
   }
 
   post () {
-    if (this.postText != null) {
-      fetch(process.env.REACT_APP_POST_PATH)
-        .then(response =>
-          response.json()
-        )
-        // .then(json =>
-        // )
-        // .catch(e =>
-        // )
+    if (this.postText === null) {
+      return
     }
+
+    const body = JSON.stringify({
+      text: this.state.content || '',
+      desc: this.state.description || '',
+      fontSize: 22,
+      spacing: 1.5,
+    })
+
+    fetch(process.env.REACT_APP_POST_PATH, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: body,
+    })
+      .then(response => {
+        this.setState({
+          sendStatus: 'sent',
+          description: '',
+          content: '',
+        })
+      })
+      .catch(err => {
+        this.setState({
+          sendStatus: err,
+        })
+      })
+  }
+
+  descriptionChange (e) {
+    e && e.target && this.setState({ description: e.target.value })
+  }
+  contentChange (e) {
+    e && e.target && this.setState({ content: e.target.value })
   }
 
   render () {
     return (
-      <div>
+      <Fragment>
+
         <div className={css(styles.postInput)}>
           <div className={css(styles.image)}>
             <img
@@ -57,26 +88,21 @@ class PostInput extends Component {
           </div>
 
           <TextareaAutosize
-            disabled={!this.props.edit}
             className={css(styles.text)}
-            defaultValue={'Description #hashtags ...'}
+            value={ this.state.description }
+            onChange={ this.descriptionChange }
+            disabled={!this.props.edit}
             placeholder={'Description'}
-            innerRef={this.postDescRef}
+            minRows={1}
             maxRows={5}
+            style={{ fontSize: descFontSize }}
           />
 
           <div className={css(styles.content)}>
             <ContentEditor
+              value={ this.state.content }
+              onChange={ this.contentChange }
               edit={this.props.edit}
-              text={
-                'Arguing that you don\'t care about the\n' +
-                'right to privacy because you have\n' +
-                'nothing to hide is no different from\n' +
-                'saying you don\'t care about free speech\n' +
-                'because you have nothing to say.\n' +
-                '- Edward Snowden'
-              }
-              innerRef={this.postTextRef}
             />
           </div>
         </div>
@@ -84,16 +110,18 @@ class PostInput extends Component {
         {
           this.props.edit === true
             ? (
-              <PostButton
-                onClick={ this.post }
-              >
+              <PostButton onClick={ this.post }>
                 Post to Twitter
               </PostButton>
             )
             : null
         }
 
-      </div>
+        <div>
+          { this.state.sendStatus }
+        </div>
+
+      </Fragment>
     )
   }
 }
@@ -152,7 +180,7 @@ const styles = StyleSheet.create({
   text: {
     'grid-area': 'text',
     'text-align': 'left',
-    'font-size': '14px',
+    'font-size': descFontSize + 'px',
     border: 'none',
     margin: '4px 0 0 0',
     padding: 0,
