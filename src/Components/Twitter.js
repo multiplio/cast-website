@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import './Login.css'
+import './Twitter.css'
 
-const Login = ({ onClick, children }) => {
+const Twitter = ({ onClick, children }) => {
   return (
-    <div onClick={ onClick }>
+    <Fragment>
       {/* Sharingbutton Twitter */}
-      <div className="resp-sharing-button__link">
+      <div className="resp-sharing-button__link" onClick={ onClick }>
         <div className="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--large">
 
           <div aria-hidden="true" className="resp-sharing-button__icon resp-sharing-button__icon--solid">
@@ -21,12 +21,12 @@ const Login = ({ onClick, children }) => {
         </div>
       </div>
 
-    </div>
+    </Fragment>
   )
 }
-Login.propTypes = {
+Twitter.propTypes = {
   children: PropTypes.string,
   onClick: PropTypes.func,
 }
-export default Login
+export default Twitter
 

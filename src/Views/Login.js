@@ -5,7 +5,7 @@ import { StyleSheet, css } from 'aphrodite'
 
 import pallete from '../Styles/pallete'
 
-import LoginC from '../Components/Login'
+import TwitterButton from '../Components/Twitter'
 import Header from '../Components/Header'
 import Cookie from '../Components/CookieNotice'
 
@@ -35,11 +35,9 @@ class Login extends Component {
     const loggedOut =
     <div>
       Login to continue
-      <LoginC
-        onClick={ this.loginWithTwitter }
-      >
+      <TwitterButton onClick={ this.loginWithTwitter }>
         Login with Twitter
-      </LoginC>
+      </TwitterButton>
     </div>
 
     return (
@@ -48,7 +46,6 @@ class Login extends Component {
 
         <div className={css(styles.view)}>
           <h1>Login</h1>
-
           {
             this.props.user.loaded === true
               ? (this.props.user.displayName !== null

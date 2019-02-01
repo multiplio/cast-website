@@ -5,7 +5,7 @@ import { StyleSheet, css } from 'aphrodite'
 
 import TextareaAutosize from 'react-textarea-autosize'
 
-import PostButton from '../Components/Login'
+import TwitterButton from '../Components/Twitter'
 import ContentEditor from './ContentEditor'
 
 // import pallete from '../Styles/pallete'
@@ -110,9 +110,9 @@ class PostInput extends Component {
         {
           this.props.edit === true
             ? (
-              <PostButton onClick={ this.post }>
+              <TwitterButton onClick={ this.post }>
                 Post to Twitter
-              </PostButton>
+              </TwitterButton>
             )
             : null
         }

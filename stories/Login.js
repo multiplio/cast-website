@@ -3,7 +3,6 @@ import { Provider } from 'mobx-react'
 import { MemoryRouter } from 'react-router-dom'
 import { storiesOf } from '@storybook/react'
 
-import Login from '../src/Components/Login'
 import LoginView from '../src/Views/Login'
 
 import { userIn, userOut } from './userPlaceholders'
@@ -15,16 +14,13 @@ storiesOf('Login', module)
       { story() }
     </MemoryRouter>
   ))
-  .add('button',
-    () => <Login/>
-  )
-  .add('view - logged in',
+  .add('logged in',
     () =>
       <Provider user={userIn} webpage={accepted}>
         <LoginView/>
       </Provider>
   )
-  .add('view - logged out',
+  .add('logged out',
     () =>
       <Provider user={userOut} webpage={accepted}>
         <LoginView/>
