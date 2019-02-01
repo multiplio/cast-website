@@ -10,7 +10,7 @@ import ContentEditor from './ContentEditor'
 
 // import pallete from '../Styles/pallete'
 
-const descFontSize = 14
+const descriptionFontSize = 14
 
 class PostInput extends Component {
   constructor (props) {
@@ -95,7 +95,7 @@ class PostInput extends Component {
             placeholder={'Description'}
             minRows={1}
             maxRows={5}
-            style={{ fontSize: descFontSize }}
+            style={{ fontSize: descriptionFontSize }}
           />
 
           <div className={css(styles.content)}>
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   text: {
     'grid-area': 'text',
     'text-align': 'left',
-    'font-size': descFontSize + 'px',
+    'font-size': descriptionFontSize + 'px',
     border: 'none',
     margin: '4px 0 0 0',
     padding: 0,
