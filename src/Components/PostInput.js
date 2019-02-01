@@ -23,10 +23,23 @@ class PostInput extends Component {
       sendStatus: null,
     }
 
+    // refs
+    this.contentEditor = null
+    this.ContentRef = element => {
+      this.contentEditor = element
+    }
+
     // method bindings
+    this.focusContent = this.focusContent.bind(this)
     this.post = this.post.bind(this)
     this.descriptionChange = this.descriptionChange.bind(this)
     this.contentChange = this.contentChange.bind(this)
+  }
+
+  focusContent () {
+    if (this.contentEditor !== null) {
+      this.contentEditor.focus()
+    }
   }
 
   post () {
@@ -98,11 +111,12 @@ class PostInput extends Component {
             style={{ fontSize: descriptionFontSize }}
           />
 
-          <div className={css(styles.content)}>
+          <div className={css(styles.content)} onClick={this.focusContent}>
             <ContentEditor
               value={ this.state.content }
               onChange={ this.contentChange }
-              edit={this.props.edit}
+              edit={ this.props.edit }
+              innerRef={ this.ContentRef }
             />
           </div>
         </div>

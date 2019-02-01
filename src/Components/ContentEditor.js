@@ -8,7 +8,7 @@ import TextareaAutosize from 'react-textarea-autosize'
 
 const fontSize = 22
 
-const ContentEditor = ({ edit, value, onChange }) => {
+const ContentEditor = ({ edit, value, onChange, innerRef }) => {
   return (
     <div className={css(styles.container)}>
       <TextareaAutosize
@@ -19,6 +19,7 @@ const ContentEditor = ({ edit, value, onChange }) => {
         placeholder={'Enter your post here.'}
         minRows={1}
         maxRows={100}
+        inputRef={ innerRef }
         autoFocus
         style={{ fontSize: fontSize }}
       />
@@ -29,6 +30,7 @@ ContentEditor.propTypes = {
   edit: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  innerRef: PropTypes.func,
 }
 export default ContentEditor
 
