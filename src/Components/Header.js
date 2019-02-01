@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { StyleSheet, css } from 'aphrodite'
 
 import pallete from '../Styles/pallete'
-import logo from '../Assets/logo-transparent-color.svg'
+import logo from '../Assets/cast-fontlogo-white.svg'
 
 import ProfileButton from '../Components/ProfileButton'
 
@@ -15,11 +15,10 @@ export default class Header extends Component {
         <Link to="/">
           <div className={css(styles.logo)}>
             <img alt="logo" className={css(styles['logo-image'])} src={logo} />
-            <p className={css(styles['logo-text'])}>QuackUp!</p>
           </div>
         </Link>
 
-        <ProfileButton styles={styles.profile}/>
+        <ProfileButton inheritStyles={styles.profile}/>
 
       </div>
     )
@@ -28,29 +27,26 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: pallete.white,
-    height: '3rem',
-    margin: 0,
+    backgroundColor: pallete.background,
+    height: '5rem',
+    display: 'flex',
+    'justify-content': 'space-between',
+    'align-items': 'center',
   },
-  profile: {
-    float: 'right',
-  },
+
   logo: {
     pointer: 'cursor',
+    'padding': '1rem',
+    'margin-left': '0.5rem',
   },
   'logo-image': {
-    float: 'left',
     height: '2.5rem',
-    'padding-top': '0.25rem',
-    'padding-left': '0.5rem',
+    width: 'auto',
   },
-  'logo-text': {
-    'margin': 0,
-    'padding-left': '0.5rem',
-    float: 'left',
-    'font-size': '1.4rem',
-    'line-height': '3rem',
-    color: 'black',
+
+  profile: {
+    'padding': '1rem',
+    'margin-right': '0.5rem',
   },
 })
 
