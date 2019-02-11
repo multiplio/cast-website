@@ -7,9 +7,10 @@ all: Makefile .image-timestamp
 build: src/ node_modules/ sw-precache-config.js package.json yarn.lock
 	yarn build
 
-.image-timestamp: build Dockerfile public/
+.image-timestamp: build/ Dockerfile public/
 	docker image build \
-		-t ${project}/${name}:latest .
+		-t ${project}/${name}:latest \
+		.
 
 .PHONY:run
 run:
