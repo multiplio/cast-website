@@ -1,5 +1,4 @@
-projectID=tekwrks
-repo=quackup
+project=tekwrks
 name=website
 version=1.0.0
 
@@ -11,30 +10,30 @@ build: src/ node_modules/ sw-precache-config.js package.json yarn.lock
 
 .image-timestamp: build Dockerfile public/
 	docker image build \
-		-t ${repo}/${name}:${version} .
+		-t ${project}/${name}:${version} .
 
 .PHONY:run
 run:
 	docker container run \
 		--rm \
-		--name ${repo}-${name}-dev \
+		--name ${project}-${name}-dev \
 		--env-file .env \
 		-p 7001:7001 \
-		-t ${repo}/${name}:${version}
+		-t ${project}/${name}:${version}
 
 .PHONY:kill
 kill:
 	docker rm $$( \
 	docker kill $$( \
 	docker ps -aq \
-	--filter="name=${repo}-${name}-dev" ))
+	--filter="name=${project}-${name}-dev" ))
 
 .PHONY: push
 push:
 	set -ex;
 	docker tag \
-		${repo}/website:${version} \
-		gcr.io/${projectID}/website:${version}
+		${project}/website:${version} \
+		gcr.io/${project}/website:${version}
 	docker push \
-		gcr.io/${projectID}/website:${version}
+		gcr.io/${project}/website:${version}
 
