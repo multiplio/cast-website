@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, css } from 'aphrodite'
 
 import pallete from '../Styles/pallete'
@@ -12,13 +13,16 @@ const Container = ({ children }) => {
     <div className={css(styles.container)}>
 
       <Header/>
-        { children }
+      { children }
       <Footer/>
 
       <Cookie/>
 
     </div>
   )
+}
+Container.propTypes = {
+  children: PropTypes.object,
 }
 export default Container
 

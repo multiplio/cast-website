@@ -1,13 +1,9 @@
 project=tekwrks
 name=website
 
-all: Makefile .image-timestamp
-	@touch .image-timestamp
-
-build: src/ node_modules/ sw-precache-config.js package.json yarn.lock
+.PHONY:build
+build:
 	yarn build
-
-.image-timestamp: build/ Dockerfile public/
 	docker image build \
 		-t ${project}/${name}:latest \
 		.
