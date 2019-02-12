@@ -5,9 +5,9 @@ import { StyleSheet, css } from 'aphrodite'
 
 import pallete from '../Styles/pallete'
 
+import Container from '../Components/Container'
+
 import TwitterButton from '../Components/Twitter'
-import Header from '../Components/Header'
-import Cookie from '../Components/CookieNotice'
 
 class Login extends Component {
   constructor (props) {
@@ -17,7 +17,7 @@ class Login extends Component {
   }
 
   componentDidMount () {
-    document.title = 'QuackUp - login'
+    document.title = 'Cast - login'
   }
 
   loginWithTwitter () {
@@ -41,23 +41,21 @@ class Login extends Component {
     </div>
 
     return (
-      <div className={css(styles.container)}>
-        <Header/>
-
-        <div className={css(styles.view)}>
-          <h1>Login</h1>
-          {
-            this.props.user.loaded === true
-              ? (this.props.user.displayName !== null
-                ? loggedIn
-                : loggedOut
-              )
-              : null
-          }
+      <Container>
+        <div className={css(styles.container)}>
+          <div className={css(styles.view)}>
+            <h1>Login</h1>
+            {
+              this.props.user.loaded === true
+                ? (this.props.user.displayName !== null
+                  ? loggedIn
+                  : loggedOut
+                )
+                : null
+            }
+          </div>
         </div>
-
-        <Cookie />
-      </div>
+      </Container>
     )
   }
 }

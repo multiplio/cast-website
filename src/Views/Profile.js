@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 
-import Header from '../Components/Header'
+import Container from '../Components/Container'
+
 import User from '../Components/User'
-import Cookie from '../Components/CookieNotice'
 
 export default class Home extends Component {
   componentDidMount () {
-    document.title = 'QuackUp - my profile'
+    document.title = 'Cast - My profile'
   }
   render () {
     return (
-      <div>
-        <Header/>
-
+      <Container>
         <div className="content">
           This is the profile page.
 
@@ -22,9 +20,7 @@ export default class Home extends Component {
           <a href="/logout">Log out</a>
 
         </div>
-
-        <Cookie/>
-      </div>
+      </Container>
     )
   }
 }

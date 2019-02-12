@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
+import Container from '../Components/Container'
+
 export default class PrivacyPolicy extends Component {
   componentDidMount () {
-    document.title = 'QuackUp - Privacy Policy'
+    document.title = 'Cast - Privacy Policy'
   }
   render () {
     return (
-      <div>
+      <Container>
 
         <h1>Privacy Policy</h1>
 
@@ -114,7 +116,7 @@ export default class PrivacyPolicy extends Component {
           <li>By visiting this page on our website: https://www.tekwrks.com/privacy</li>
 
         </ul>
-      </div>
+      </Container>
     )
   }
 }

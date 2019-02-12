@@ -6,13 +6,13 @@ import { StyleSheet, css } from 'aphrodite'
 
 // import pallete from '../Styles/pallete'
 
-import Header from '../Components/Header'
-import Cookie from '../Components/CookieNotice'
+import Container from '../Components/Container'
+
 import Post from '../Components/PostInput'
 
 class Home extends Component {
   componentDidMount () {
-    document.title = 'QuackUp'
+    document.title = 'Cast'
   }
   render () {
     const loggedIn =
@@ -44,27 +44,27 @@ class Home extends Component {
         <li>Content is securelly saved</li>
         <li>Links are posted to selected platforms</li>
       </ol>
-      planned interoperability - IPFS
+      interoperability - IPFS
       freedom of data
     </div>
 
     return (
-      <div className={css(styles.container)}>
-        <Header />
+      <Container>
+        <div className={css(styles.container)}>
 
-        <div className={css(styles.view)}>
-          {
-            this.props.user.loaded === true
-              ? (this.props.user.displayName !== null
-                ? loggedIn
-                : loggedOut
-              )
-              : null
-          }
+          <div className={css(styles.view)}>
+            {
+              this.props.user.loaded === true
+                ? (this.props.user.displayName !== null
+                  ? loggedIn
+                  : loggedOut
+                )
+                : null
+            }
+          </div>
+
         </div>
-
-        <Cookie />
-      </div>
+      </Container>
     )
   }
 }
