@@ -6,7 +6,7 @@ const pallete = {
   background: 'rgba(227, 227, 227, 1)',
 
   black: 'rgba(13, 2, 33, 1)',
-  white: 'rgba(237, 230, 227, 1)',
+  white: 'rgba(255, 255, 255, 1)',
 }
 
 export default pallete

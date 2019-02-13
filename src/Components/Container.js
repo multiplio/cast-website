@@ -29,9 +29,12 @@ export default Container
 const styles = StyleSheet.create({
   container: {
     backgroundColor: pallete.white,
-    width: '1000px',
+    'max-width': '1000px',
     margin: '2rem auto',
     'min-height': 'calc(100% - 4rem)',
+    display: 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'space-between',
   },
 })
 

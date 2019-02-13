@@ -34,7 +34,6 @@ class Login extends Component {
 
     const loggedOut =
     <div>
-      Login to continue
       <TwitterButton onClick={ this.loginWithTwitter }>
         Login with Twitter
       </TwitterButton>
@@ -44,7 +43,7 @@ class Login extends Component {
       <Container>
         <div className={css(styles.container)}>
           <div className={css(styles.view)}>
-            <h1>Login</h1>
+            <h1 className={css(styles.header)}>Login</h1>
             {
               this.props.user.loaded === true
                 ? (this.props.user.displayName !== null
@@ -66,17 +65,27 @@ export default inject('user')(observer(Login))
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     height: '100%',
-    backgroundColor: pallete.blue,
+    'flex-grow': '1',
+    backgroundColor: pallete.white,
+    display: 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'space-around',
   },
   view: {
+    height: '100%',
+    width: '100%',
     margin: 0,
     display: 'flex',
+    'flex-direction': 'column',
     'align-items': 'center',
     'align-content': 'center',
-    'justify-content': 'space-between',
-    'flex-direction': 'column',
+    'justify-content': 'space-around',
     'text-align': 'center',
+  },
+  header: {
+    margin: '0 0 1rem 0',
   },
 })
 
