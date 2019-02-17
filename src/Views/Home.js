@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
-import { Link } from 'react-router-dom'
 import { StyleSheet, css } from 'aphrodite'
 
 // import pallete from '../Styles/pallete'
@@ -22,30 +21,17 @@ class Home extends Component {
 
     const loggedOut =
     <div>
-      This is the home page.
-      <Link to="/login">Login</Link>
-      <h3>Beta</h3>
-      Content is king
-
       <p>Take ownership of your content.</p>
       <p>Content as content, publishers as consumers.</p>
-      <p>State of the art technology - Solid</p>
-      <p>Easy to use</p>
+      <p>Easy to use.</p>
+      <p>Post once, link anywhere!</p>
 
-      <ul>
-        <li>Hassle free</li>
-        <li>Platform agnostic</li>
-        <li>Transparent</li>
-        <li>State of the art</li>
-      </ul>
       <ol>
         <li>Post your content</li>
         <li>Selects platforms</li>
         <li>Content is securelly saved</li>
         <li>Links are posted to selected platforms</li>
       </ol>
-      interoperability - IPFS
-      freedom of data
     </div>
 
     return (
