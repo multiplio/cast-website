@@ -13,8 +13,7 @@ run:
 	docker container run \
 		--rm \
 		--name ${project}-${name}-dev \
-		--env-file .env \
-		-p 7001:7001 \
+		-p 3000:80 \
 		-t ${project}/${name}:latest
 
 .PHONY:kill
