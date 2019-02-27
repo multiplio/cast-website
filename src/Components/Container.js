@@ -13,7 +13,9 @@ const Container = ({ children }) => {
     <div className={css(styles.container)}>
 
       <Header/>
+
       { children }
+
       <Footer/>
 
       <Cookie/>
@@ -30,8 +32,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: pallete.white,
     'max-width': '1000px',
-    margin: '2rem auto',
-    'min-height': 'calc(100% - 4rem)',
+    'margin': '0 auto',
+    'padding-top': '2rem',
+    'min-height': 'calc(100% - 2rem)',
     display: 'flex',
     'flex-direction': 'column',
     'justify-content': 'space-between',

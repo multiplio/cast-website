@@ -8,8 +8,11 @@ const Footer = () => {
   return (
     <div className={css(styles.footer)}>
 
-      <Link to="/terms">Terms of Use</Link>
-      <Link to="/privacy">Privacy Policy</Link>
+      <section className={css(styles.view)}>
+        <span className={css(styles.item)}>Copyright ©2019 Tekwrks</span>
+        <Link className={css(styles.item)} to="/terms">Terms of Use</Link>
+        <Link className={css(styles.item)} to="/privacy">Privacy Policy</Link>
+      </section>
 
     </div>
   )
@@ -19,9 +22,17 @@ export default Footer
 const styles = StyleSheet.create({
   footer: {
     backgroundColor: pallete.background,
-    height: '5rem',
+    height: '4rem',
     display: 'flex',
-    'align-items': 'left',
+    'justify-content': 'space-around',
+    'align-items': 'center',
+    'font-size': '11px',
+    'font-weight': 'bold',
+  },
+  view: {
+  },
+  item: {
+    margin: '0 3px',
   },
 })
 
