@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
+    display: 'none',
     'grid-area': 'text',
     'text-align': 'left',
     'font-size': descriptionFontSize + 'px',
