@@ -47,6 +47,8 @@ const styles = StyleSheet.create({
   profile: {
     'padding': '1rem',
     'margin-right': '0.5rem',
+    backgroundColor: pallete.white,
+    'border-radius': '10px',
   },
 })
 

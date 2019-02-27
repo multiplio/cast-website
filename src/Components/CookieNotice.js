@@ -16,7 +16,7 @@ class CookieNotice extends Component {
       return (
         <div className={css(styles.container)}>
           <div className={css(styles.text)}>
-            This webpage uses cookies. By continuing, you agree to their use. We will never use them to track you.
+            This webpage uses cookies. By continuing, you agree to their use.
           </div>
           <div
             className={css(styles.dismiss)}
@@ -40,11 +40,15 @@ const styles = StyleSheet.create({
     'align-items': 'center',
     'justify-content': 'space-between',
     'flex-wrap': 'nowrap',
-    backgroundColor: pallete.yellow,
+    backgroundColor: pallete.background,
     position: 'fixed',
     bottom: 0,
-    left: 0,
-    right: 0,
+    left: '5rem',
+    right: '5rem',
+    'height': '5rem',
+    padding: '0 0.5rem',
+    border: 'solid black 1px',
+    'border-radius': '10px 10px 0 0',
   },
   text: {
     'flex-grow': 1,
@@ -53,12 +57,13 @@ const styles = StyleSheet.create({
     'flex-basis': 'auto',
     'flex-shrink': 0,
     'white-space': 'nowrap',
-    backgroundColor: pallete.blue,
+    backgroundColor: pallete.primary,
     padding: '1rem',
     float: 'right',
     cursor: 'pointer',
+    'border-radius': '10px',
     ':hover': {
-      backgroundColor: pallete.red,
+      backgroundColor: pallete.primaryDark,
     },
   },
 })
