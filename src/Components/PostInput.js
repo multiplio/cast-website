@@ -62,15 +62,19 @@ class PostInput extends Component {
       body: body,
     })
       .then(response => {
+        if (response.status !== 200) {
+          throw Error(response.status)
+        }
+
         this.setState({
           sendStatus: 'sent',
           description: '',
           content: '',
         })
       })
-      .catch(err => {
+      .catch(code => {
         this.setState({
-          sendStatus: err,
+          sendStatus: code + ' : error sending post, please try again',
         })
       })
   }
@@ -97,7 +101,6 @@ class PostInput extends Component {
             <div className={css(styles['name-display'])}>
               { this.props.user.displayName }
             </div>
-            <div className={css(styles['name-handle'])}></div>
           </div>
 
           <TextareaAutosize
@@ -151,13 +154,13 @@ const styles = StyleSheet.create({
     'font-size': '14px',
     display: 'grid',
     'grid-template-areas':
-    `'image name name name name name'
-      'image text text text text text'
-      'image content content content content content'`,
-    'grid-template-columns': '60px auto',
-    'grid-template-rows': '20px auto',
+    `'image'
+     'name'
+     'text'
+     'content'`,
+    'grid-template-columns': 'auto',
+    'grid-template-rows': 'auto',
     padding: '10px',
-    border: '1px solid #bbb',
     width: '600px',
     left: '50%',
     margin: '0.5rem',
@@ -166,28 +169,22 @@ const styles = StyleSheet.create({
   // profile picture
   image: {
     'grid-area': 'image',
-    'text-align': 'left',
+    'text-align': 'center',
   },
   picture: {
-    width: '48px',
-    height: '48px',
+    width: '80px',
+    height: '80px',
     'border-radius': '50%',
   },
 
   // name, handle
   name: {
     'grid-area': 'name',
-    'text-align': 'left',
+    'text-align': 'center',
   },
   'name-display': {
     display: 'inline',
     'font-weight': 'bold',
-    'line-height': '20px',
-    'margin-right': '4px',
-  },
-  'name-handle': {
-    display: 'inline',
-    'font-weight': 'normal',
     'line-height': '20px',
   },
 
@@ -206,7 +203,8 @@ const styles = StyleSheet.create({
 
   content: {
     'grid-area': 'content',
-    border: '1px solid #bbb',
+    border: '3px solid #333',
+    'border-radius': '20px',
     'margin-top': '10px',
     position: 'relative',
     width: '100%',
