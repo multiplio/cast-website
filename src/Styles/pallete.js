@@ -1,7 +1,11 @@
 const pallete = {
-  blue: 'rgba(91, 192, 235, 1)',
-  red: 'rgba(248, 51, 60, 1)',
-  yellow: 'rgba(247, 184, 1, 1)',
+  primary: 'rgba(247, 184, 1, 1)',
+  primaryDark: 'rgba(247, 184, 1, 1)',
+
+  secondary: 'rgba(247, 184, 1, 1)',
+  secondaryDark: 'rgba(247, 184, 1, 1)',
+
+  accent: 'rgba(247, 184, 1, 1)',
 
   background: 'rgba(227, 227, 227, 1)',
 
