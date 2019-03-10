@@ -12,11 +12,14 @@ export default class Header extends Component {
     return (
       <div className={css(styles.header)}>
 
-        <Link to="/">
-          <div className={css(styles.logo)}>
-            <img alt="logo" className={css(styles['logo-image'])} src={logo} />
-          </div>
-        </Link>
+        <div className={css(styles.logoGroup)}>
+          <Link to="/">
+            <div className={css(styles.logo)}>
+              <img alt="logo" className={css(styles['logo-image'])} src={logo} />
+            </div>
+          </Link>
+          <span className={css(styles.tag)}>BETA</span>
+        </div>
 
         <ProfileButton inheritStyles={styles.profile}/>
 
@@ -34,6 +37,9 @@ const styles = StyleSheet.create({
     'align-items': 'center',
   },
 
+  logoGroup: {
+    display: 'flex',
+  },
   logo: {
     pointer: 'cursor',
     'padding': '1rem',
@@ -42,6 +48,11 @@ const styles = StyleSheet.create({
   'logo-image': {
     height: '2.5rem',
     width: 'auto',
+  },
+  tag: {
+    color: pallete.white,
+    'font-size': '20px',
+    'margin-top': '12px',
   },
 
   profile: {
