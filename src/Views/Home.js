@@ -8,6 +8,7 @@ import { StyleSheet, css } from 'aphrodite'
 import Container from '../Components/Container'
 
 import Post from '../Components/PostInput'
+import Explanaition from '../Components/Explanaition'
 
 class Home extends Component {
   componentDidMount () {
@@ -19,20 +20,7 @@ class Home extends Component {
       <Post edit={true} />
     </div>
 
-    const loggedOut =
-    <div>
-      <p>Take ownership of your content.</p>
-      <p>Content as content, publishers as consumers.</p>
-      <p>Easy to use.</p>
-      <p>Post once, link anywhere!</p>
-
-      <ol>
-        <li>Post your content</li>
-        <li>Selects platforms</li>
-        <li>Content is securelly saved</li>
-        <li>Links are posted to selected platforms</li>
-      </ol>
-    </div>
+    const loggedOut = <Explanaition />
 
     return (
       <Container>
