@@ -124,15 +124,17 @@ class PostInput extends Component {
           </div>
         </div>
 
-        {
-          this.props.edit === true
-            ? (
-              <TwitterButton onClick={ this.post }>
-                Post to Twitter
-              </TwitterButton>
-            )
-            : null
-        }
+        <div className={css(styles.buttons)}>
+          {
+            this.props.edit === true
+              ? (
+                <TwitterButton onClick={ this.post }>
+                  Post to Twitter
+                </TwitterButton>
+              )
+              : null
+          }
+        </div>
 
         <div>
           { this.state.sendStatus }
@@ -203,16 +205,23 @@ const styles = StyleSheet.create({
 
   content: {
     'grid-area': 'content',
-    border: '3px solid #333',
-    'border-radius': '20px',
+    border: '1px solid #333',
+    'border-radius': '50px',
     'margin-top': '10px',
     position: 'relative',
     width: '100%',
     'padding-bottom': '50%',
   },
 
+  buttons: {
+    width: '100%',
+    display: 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'space-around',
+    'align-items': 'center',
+  },
+
   post: {
-    float: 'right',
   },
 })
 
