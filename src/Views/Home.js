@@ -8,7 +8,7 @@ import { StyleSheet, css } from 'aphrodite'
 import Container from '../Components/Container'
 
 import Post from '../Components/PostInput'
-import Explanaition from '../Components/Explanaition'
+import Explanation from '../Components/Explanation'
 
 class Home extends Component {
   componentDidMount () {
@@ -16,26 +16,26 @@ class Home extends Component {
   }
   render () {
     const loggedIn =
-    <div>
-      <Post edit={true} />
+    <div className={css(styles.view)}>
+      <div>
+        <Post edit={true} />
+      </div>
     </div>
 
-    const loggedOut = <Explanaition />
+    const loggedOut = <Explanation />
 
     return (
       <Container>
         <div className={css(styles.container)}>
 
-          <div className={css(styles.view)}>
-            {
-              this.props.user.loaded === true
-                ? (this.props.user.displayName !== null
-                  ? loggedIn
-                  : loggedOut
-                )
-                : null
-            }
-          </div>
+          {
+            this.props.user.loaded === true
+              ? (this.props.user.displayName !== null
+                ? loggedIn
+                : loggedOut
+              )
+              : null
+          }
 
         </div>
       </Container>
