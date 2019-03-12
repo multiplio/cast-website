@@ -8,6 +8,7 @@ import { StyleSheet, css } from 'aphrodite'
 import Container from '../Components/Container'
 
 import Post from '../Components/PostInput'
+import Explanation from '../Components/Explanation'
 
 class Home extends Component {
   componentDidMount () {
@@ -15,39 +16,26 @@ class Home extends Component {
   }
   render () {
     const loggedIn =
-    <div>
-      <Post edit={true} />
+    <div className={css(styles.view)}>
+      <div>
+        <Post edit={true} />
+      </div>
     </div>
 
-    const loggedOut =
-    <div>
-      <p>Take ownership of your content.</p>
-      <p>Content as content, publishers as consumers.</p>
-      <p>Easy to use.</p>
-      <p>Post once, link anywhere!</p>
-
-      <ol>
-        <li>Post your content</li>
-        <li>Selects platforms</li>
-        <li>Content is securelly saved</li>
-        <li>Links are posted to selected platforms</li>
-      </ol>
-    </div>
+    const loggedOut = <Explanation />
 
     return (
       <Container>
         <div className={css(styles.container)}>
 
-          <div className={css(styles.view)}>
-            {
-              this.props.user.loaded === true
-                ? (this.props.user.displayName !== null
-                  ? loggedIn
-                  : loggedOut
-                )
-                : null
-            }
-          </div>
+          {
+            this.props.user.loaded === true
+              ? (this.props.user.displayName !== null
+                ? loggedIn
+                : loggedOut
+              )
+              : null
+          }
 
         </div>
       </Container>
