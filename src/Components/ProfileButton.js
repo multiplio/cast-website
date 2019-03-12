@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react'
 
 import { Link } from 'react-router-dom'
 
-// import pallete from '../Styles/pallete'
+import pallete from '../Styles/pallete'
 
 const ProfileButton = ({ user, inheritStyles }) => {
   const loggedOut =
@@ -49,9 +49,14 @@ const styles = StyleSheet.create({
   image: {
     width: '56px',
     height: '56px',
+    'border-radius': '50%',
+    'margin-right': '0.5rem',
   },
   login: {
     color: 'black',
+    'padding': '1rem',
+    backgroundColor: pallete.white,
+    'border-radius': '10px',
     'text-decoration': 'none',
   },
 })
