@@ -19,6 +19,13 @@ const Explanaition = () => {
   return (
     <div className={css(styles.view)}>
 
+      <section className={css(styles.what)}>
+        <div>
+          <h1>What?</h1>
+          <h3>Single message, all your social media.</h3>
+        </div>
+      </section>
+
       <section className={css(styles.postSection)}>
         <img alt="" src={post} className={css(styles.post)} />
       </section>
@@ -36,14 +43,18 @@ const Explanaition = () => {
       </section>
 
       <section className={css(styles.socialSection)}>
-        <img alt="" src={twitter} className={css(styles.socialImage)} />
-        <img alt="" src={facebook} className={css(styles.socialImage)} />
-        <img alt="" src={pinterest} className={css(styles.socialImage)} />
-        <img alt="" src={reddit} className={css(styles.socialImage)} />
-        <img alt="" src={tumblr} className={css(styles.socialImage)} />
-        <img alt="" src={linkedin} className={css(styles.socialImage)} />
-        <img alt="" src={instagram} className={css(styles.socialImage)} />
-        <img alt="" src={whatsapp} className={css(styles.socialImage)} />
+        <p>
+          <img alt="" src={twitter} className={css(styles.socialImage)} />
+          <img alt="" src={facebook} className={css(styles.socialImage)} />
+          <img alt="" src={pinterest} className={css(styles.socialImage)} />
+          <img alt="" src={reddit} className={css(styles.socialImage)} />
+        </p>
+        <p>
+          <img alt="" src={tumblr} className={css(styles.socialImage)} />
+          <img alt="" src={linkedin} className={css(styles.socialImage)} />
+          <img alt="" src={instagram} className={css(styles.socialImage)} />
+          <img alt="" src={whatsapp} className={css(styles.socialImage)} />
+        </p>
       </section>
 
     </div>
@@ -57,13 +68,22 @@ const styles = StyleSheet.create({
     height: '100%',
     display: 'grid',
     'grid-template': `
+      "what"        200px
       "postText"
       "post"
       "clusterText"
       "cluster"
       "social"
     `,
-    'grid-template-rows': '100px 250px 100px 250px 200px',
+  },
+
+  what: {
+    'grid-item': 'what',
+    color: 'white',
+    backgroundColor: 'black',
+    display: 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'space-around',
   },
 
   postSection: {

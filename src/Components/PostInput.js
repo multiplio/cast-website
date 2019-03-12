@@ -5,7 +5,6 @@ import { StyleSheet, css } from 'aphrodite'
 
 import TextareaAutosize from 'react-textarea-autosize'
 
-import TwitterButton from '../Components/Twitter'
 import ContentEditor from './ContentEditor'
 
 import twitter from '../Assets/social/twitter.svg'
@@ -92,20 +91,26 @@ class PostInput extends Component {
 
   render () {
     return (
-      <Fragment>
+      <div className={css(styles.view)}>
 
         <div className={css(styles.postInput)}>
-          <div className={css(styles.image)}>
-            <img
-              className={css(styles.picture)}
-              src={ this.props.user.pictureLink }
-              alt="profile" />
-          </div>
-          <div className={css(styles.name)}>
-            <div className={css(styles['name-display'])}>
-              { this.props.user.displayName }
-            </div>
-          </div>
+          {
+            this.props.user.name ? (
+              <Fragment>
+                <div className={css(styles.image)}>
+                  <img
+                    className={css(styles.picture)}
+                    src={ this.props.user.pictureLink }
+                    alt="profile" />
+                </div>
+                <div className={css(styles.name)}>
+                  <div className={css(styles['name-display'])}>
+                    { this.props.user.displayName }
+                  </div>
+                </div>
+              </Fragment>
+            ) : null
+          }
 
           <TextareaAutosize
             className={css(styles.text)}
@@ -128,13 +133,22 @@ class PostInput extends Component {
           </div>
         </div>
 
+        <div className={css(styles.services)}>
+          <img alt="" src={twitter} className={css(styles.socialImage)} />
+          <img alt="" src={facebook} className={css(styles.socialImage)} />
+          <img alt="" src={reddit} className={css(styles.socialImage)} />
+        </div>
+
         <div className={css(styles.buttons)}>
           {
             this.props.edit === true
-              ? (
-                <TwitterButton onClick={ this.post }>
-                  Post to Twitter
-                </TwitterButton>
+              ?
+              (
+                <div className={css(styles.postButton)} onClick={ this.post }>
+                  <div className={css(styles.postButtonText)}>
+                    Post
+                  </div>
+                </div>
               )
               : null
           }
@@ -144,7 +158,7 @@ class PostInput extends Component {
           { this.state.sendStatus }
         </div>
 
-      </Fragment>
+      </div>
     )
   }
 }
@@ -155,20 +169,28 @@ PostInput.propTypes = {
 export default inject('user')(observer(PostInput))
 
 const styles = StyleSheet.create({
+  view: {
+    width: '100%',
+    display: 'flex',
+    'flex-direction': 'column',
+    'align-items': 'center',
+  },
   postInput: {
     'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
     'font-size': '14px',
+
     display: 'grid',
-    'grid-template-areas':
-    `'image'
-     'name'
-     'text'
-     'content'`,
-    'grid-template-columns': 'auto',
-    'grid-template-rows': 'auto',
-    padding: '10px',
-    width: '600px',
-    left: '50%',
+    'grid-template-areas': `
+      'image'
+      'name'
+      'text'
+      'content'
+      'services'
+    `,
+
+    'width': '100%',
+    'max-width': '600px',
+
     margin: '0.5rem',
   },
 
@@ -209,8 +231,8 @@ const styles = StyleSheet.create({
 
   content: {
     'grid-area': 'content',
-    border: '1px solid #333',
-    'border-radius': '50px',
+    border: '5px solid black',
+    'border-radius': '10px',
     'margin-top': '10px',
     position: 'relative',
     width: '100%',
@@ -226,6 +248,47 @@ const styles = StyleSheet.create({
   },
 
   post: {
+  },
+
+  postButton: {
+    backgroundColor: 'black',
+    color: 'white',
+
+    'margin-top': '1rem',
+    'margin-bottom': '1rem',
+
+    width: '5rem',
+    height: '5rem',
+    'border-radius': '50%',
+
+    cursor: 'pointer',
+    'transition': '0.3s',
+
+    ':hover': {
+      'margin-top': '0.5rem',
+      'margin-bottom': '0.5rem',
+      width: '6rem',
+      height: '6rem',
+    },
+
+    display: 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'space-around',
+  },
+  postButtonText: {
+  },
+
+  services: {
+    'grid-area': 'services',
+    width: '100%',
+    'max-width': '600px',
+    'text-align': 'left',
+  },
+  socialImage: {
+    width: '30px',
+    margin: '0 1px',
+    height: 'auto',
+    cursor: 'pointer',
   },
 })
 
