@@ -22,6 +22,7 @@ export default Footer
 const styles = StyleSheet.create({
   footer: {
     backgroundColor: pallete.background,
+    color: pallete.white,
     height: '4rem',
     display: 'flex',
     'justify-content': 'space-around',
@@ -32,7 +33,9 @@ const styles = StyleSheet.create({
   view: {
   },
   item: {
-    margin: '0 3px',
+    margin: '0 10px',
+    color: pallete.white,
+    'text-decoration': 'none',
   },
 })
 

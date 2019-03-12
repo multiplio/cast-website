@@ -16,7 +16,7 @@ const ContentEditor = ({ edit, value, onChange, innerRef }) => {
         className={css(styles.textarea)}
         value={value}
         onChange={onChange}
-        placeholder={'Enter your post here.'}
+        placeholder={'Type your message here.'}
         minRows={1}
         maxRows={100}
         inputRef={ innerRef }
