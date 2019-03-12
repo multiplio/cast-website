@@ -8,6 +8,10 @@ import TextareaAutosize from 'react-textarea-autosize'
 import TwitterButton from '../Components/Twitter'
 import ContentEditor from './ContentEditor'
 
+import twitter from '../Assets/social/twitter.svg'
+import facebook from '../Assets/social/facebook.svg'
+import reddit from '../Assets/social/reddit.svg'
+
 // import pallete from '../Styles/pallete'
 
 const descriptionFontSize = 14

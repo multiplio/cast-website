@@ -8,34 +8,21 @@ import { StyleSheet, css } from 'aphrodite'
 import Container from '../Components/Container'
 
 import Post from '../Components/PostInput'
-import Explanation from '../Components/Explanation'
 
 class Home extends Component {
   componentDidMount () {
     document.title = 'Cast'
   }
   render () {
-    const loggedIn =
-    <div className={css(styles.view)}>
-      <div>
-        <Post edit={true} />
-      </div>
-    </div>
-
-    const loggedOut = <Explanation />
-
     return (
       <Container>
         <div className={css(styles.container)}>
 
-          {
-            this.props.user.loaded === true
-              ? (this.props.user.displayName !== null
-                ? loggedIn
-                : loggedOut
-              )
-              : null
-          }
+          <div className={css(styles.view)}>
+            <div>
+              <Post edit={true} />
+            </div>
+          </div>
 
         </div>
       </Container>
