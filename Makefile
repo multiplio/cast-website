@@ -1,5 +1,5 @@
-project=tekwrks
-name=website
+project=multipl
+name=cast-website
 
 .PHONY:build
 build:
