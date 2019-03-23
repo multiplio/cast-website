@@ -9,7 +9,7 @@ const Footer = () => {
     <div className={css(styles.footer)}>
 
       <section className={css(styles.view)}>
-        <span className={css(styles.item)}>Copyright ©2019 Tekwrks</span>
+        <span className={css(styles.item)}>Copyright ©2019 <a href="https://multipl.io">multipl</a></span>
         <Link className={css(styles.item)} to="/terms">Terms of Use</Link>
         <Link className={css(styles.item)} to="/privacy">Privacy Policy</Link>
       </section>
