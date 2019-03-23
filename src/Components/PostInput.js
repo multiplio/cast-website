@@ -279,6 +279,8 @@ const styles = StyleSheet.create({
   },
 
   services: {
+    'display': 'none',
+
     'grid-area': 'services',
     width: '100%',
     'max-width': '600px',
