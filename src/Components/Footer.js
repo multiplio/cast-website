@@ -9,7 +9,7 @@ const Footer = () => {
     <div className={css(styles.footer)}>
 
       <section className={css(styles.view)}>
-        <span className={css(styles.item)}>Copyright ©2019 Tekwrks</span>
+        <span className={css(styles.item)}>Copyright ©2019 <a href="https://multipl.io">multipl</a></span>
         <Link className={css(styles.item)} to="/terms">Terms of Use</Link>
         <Link className={css(styles.item)} to="/privacy">Privacy Policy</Link>
       </section>
@@ -22,6 +22,7 @@ export default Footer
 const styles = StyleSheet.create({
   footer: {
     backgroundColor: pallete.background,
+    color: pallete.white,
     height: '4rem',
     display: 'flex',
     'justify-content': 'space-around',
@@ -32,7 +33,9 @@ const styles = StyleSheet.create({
   view: {
   },
   item: {
-    margin: '0 3px',
+    margin: '0 10px',
+    color: pallete.white,
+    'text-decoration': 'none',
   },
 })
 

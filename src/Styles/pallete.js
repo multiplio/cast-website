@@ -7,7 +7,7 @@ const pallete = {
 
   accent: 'rgba(247, 184, 1, 1)',
 
-  background: 'rgba(227, 227, 227, 1)',
+  background: 'rgba(0, 0, 0, 1)',
 
   black: 'rgba(13, 2, 33, 1)',
   white: 'rgba(255, 255, 255, 1)',

@@ -33,11 +33,13 @@ const styles = StyleSheet.create({
     backgroundColor: pallete.white,
     'max-width': '1000px',
     'margin': '0 auto',
-    'padding-top': '2rem',
     'min-height': 'calc(100% - 2rem)',
     display: 'flex',
     'flex-direction': 'column',
     'justify-content': 'space-between',
+    '@media (min-width: 1000px)': {
+      'padding-top': '2rem',
+    },
   },
 })
 

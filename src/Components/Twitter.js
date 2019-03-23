@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import './Twitter.css'
 
 const Twitter = ({ onClick, children }) => {
   return (
-    <Fragment>
+    <div>
       {/* Sharingbutton Twitter */}
       <div className="resp-sharing-button__link" onClick={ onClick }>
         <div className="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--large">
@@ -21,7 +21,7 @@ const Twitter = ({ onClick, children }) => {
         </div>
       </div>
 
-    </Fragment>
+    </div>
   )
 }
 Twitter.propTypes = {

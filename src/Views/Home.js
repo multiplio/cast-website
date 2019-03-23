@@ -15,27 +15,17 @@ class Home extends Component {
     document.title = 'Cast'
   }
   render () {
-    const loggedIn =
-    <div className={css(styles.view)}>
-      <div>
-        <Post edit={true} />
-      </div>
-    </div>
-
-    const loggedOut = <Explanation />
-
     return (
       <Container>
         <div className={css(styles.container)}>
 
-          {
-            this.props.user.loaded === true
-              ? (this.props.user.displayName !== null
-                ? loggedIn
-                : loggedOut
-              )
-              : null
-          }
+          <div className={css(styles.view)}>
+            <div className={css(styles.post)}>
+              <Post edit={true} />
+            </div>
+
+            <Explanation />
+          </div>
 
         </div>
       </Container>
@@ -60,6 +50,11 @@ const styles = StyleSheet.create({
     'justify-content': 'space-between',
     'flex-direction': 'column',
     'text-align': 'center',
+  },
+  post: {
+    padding: '2rem 0',
+    width: '100%',
+    height: '100%',
   },
 })
 
