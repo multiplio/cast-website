@@ -10,7 +10,6 @@ import registerServiceWorker from './registerServiceWorker'
 // scroll to top on location change
 const history = createBrowserHistory()
 history.listen(_ => {
-  console.log('resetting scroll')
   window.scrollTo(0, 0)
 })
 
