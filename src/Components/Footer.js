@@ -27,8 +27,8 @@ const Footer = ({ webpage }) =>
 
     {
       webpage.accepted
-      ? null
-      : <div className={css(styles.cookieOffset)}></div>
+        ? null
+        : <div className={css(styles.cookieOffset)}></div>
     }
   </div>
 
