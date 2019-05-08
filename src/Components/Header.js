@@ -31,7 +31,7 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
   header: {
     backgroundColor: pallete.background,
-    height: '5rem',
+    height: '6.5rem',
     display: 'flex',
     'justify-content': 'space-between',
     'align-items': 'center',
