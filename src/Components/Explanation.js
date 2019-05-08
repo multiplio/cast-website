@@ -35,7 +35,7 @@ const Explanaition = () => {
 
       <section className={css(styles.storageText)}>
         <div>
-          <h1>Safelly Stored</h1>
+          <h1>Safely Stored</h1>
           <p>Stored in an immutable distributed global storage, always safe, always available.</p>
         </div>
       </section>
