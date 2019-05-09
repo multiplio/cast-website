@@ -231,8 +231,7 @@ const styles = StyleSheet.create({
 
   content: {
     'grid-area': 'content',
-    border: '5px solid black',
-    'border-radius': '10px',
+    border: '7.5px solid black',
     'margin-top': '10px',
     position: 'relative',
     width: '100%',
@@ -253,6 +252,7 @@ const styles = StyleSheet.create({
   postButton: {
     backgroundColor: 'black',
     color: 'white',
+    'font-weight': 'bold',
 
     'margin-top': '1rem',
     'margin-bottom': '1rem',

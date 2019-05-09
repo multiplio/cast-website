@@ -35,7 +35,7 @@ const Explanaition = () => {
 
       <section className={css(styles.storageText)}>
         <div>
-          <h1>Safelly Stored</h1>
+          <h1>Safely Stored</h1>
           <p>Stored in an immutable distributed global storage, always safe, always available.</p>
         </div>
       </section>
@@ -100,11 +100,11 @@ const styles = StyleSheet.create({
     'justify-content': 'space-around',
   },
   storageImg: {
-    'max-height': '100%',
+    'max-height': '80%',
   },
   storageText: {
     'grid-area': 'storage-text',
-    padding: '2rem',
+    padding: '2rem 4rem',
     display: 'flex',
     'align-items': 'center',
     'text-align': 'center',
