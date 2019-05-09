@@ -100,11 +100,11 @@ const styles = StyleSheet.create({
     'justify-content': 'space-around',
   },
   storageImg: {
-    'max-height': '100%',
+    'max-height': '80%',
   },
   storageText: {
     'grid-area': 'storage-text',
-    padding: '2rem',
+    padding: '2rem 4rem',
     display: 'flex',
     'align-items': 'center',
     'text-align': 'center',
