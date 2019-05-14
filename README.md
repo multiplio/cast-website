@@ -11,7 +11,7 @@
 
 ## Consumes
 
-[user api](https://github.com/multiplio/user):
+[user api](https://github.com/multiplio/cast-user):
 - GET ```/auth/<service>/``` initialize authentication using a given
   ```<service>```, redirects back with session cookie set
 - GET ```/identity/``` returns public profile for the currently
