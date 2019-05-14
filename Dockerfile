@@ -5,3 +5,4 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 # site contents
 COPY ./build/ /usr/share/nginx/html
+COPY ./static/ /usr/share/nginx/html/assets

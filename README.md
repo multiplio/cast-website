@@ -3,6 +3,12 @@
 
 [https://cast.multipl.io](https://cast.multipl.io)
 
+## Routes
+
+- ```/healthcheck``` - kubernetes readiness check
+- ```/assets/*``` - static assets
+- ```*``` - website
+
 ## Consumes
 
 [user api](https://github.com/multiplio/user):
