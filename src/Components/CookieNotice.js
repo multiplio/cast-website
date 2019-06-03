@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   view: {
     width: '100%',
-    'max-width': '1000px',
+    'max-width': '1200px',
     height: '100%',
     display: 'flex',
     'align-items': 'center',

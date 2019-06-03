@@ -31,13 +31,13 @@ export default Container
 const styles = StyleSheet.create({
   container: {
     backgroundColor: pallete.white,
-    'max-width': '1000px',
+    'max-width': '1200px',
     'margin': '0 auto',
     'min-height': 'calc(100% - 2rem)',
     display: 'flex',
     'flex-direction': 'column',
     'justify-content': 'space-between',
-    '@media (min-width: 1000px)': {
+    '@media (min-width: 1200px)': {
       'padding-top': '2rem',
     },
   },
