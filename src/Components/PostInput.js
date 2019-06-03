@@ -50,6 +50,12 @@ class PostInput extends Component {
       return
     }
 
+    // if not logged in -> redirect to login
+    if (!this.user.loggedIn) {
+      window.location.href = process.env.REACT_APP_LOGIN_PATH
+    }
+
+    // create post
     const body = JSON.stringify({
       text: this.state.content || '',
       desc: this.state.description || '',
@@ -57,6 +63,7 @@ class PostInput extends Component {
       spacing: 1.5,
     })
 
+    // submit post
     fetch(process.env.REACT_APP_POST_PATH, {
       method: 'POST',
       headers: {

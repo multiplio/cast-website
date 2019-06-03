@@ -1,4 +1,4 @@
-import { observable, action, decorate } from 'mobx'
+import { observable, action, computed, decorate } from 'mobx'
 
 class User {
   constructor () {
@@ -9,6 +9,11 @@ class User {
 
     // load
     this.loadUser()
+  }
+
+  // computed
+  get loggedIn () {
+    return (this.loaded === true && this.displayName !== null)
   }
 
   // actions
@@ -38,6 +43,9 @@ decorate(User, {
   loaded: observable,
   displayName: observable,
   pictureLink: observable,
+
+  // computed
+  loggedIn: computed,
 
   // actions
   setUser: action,
