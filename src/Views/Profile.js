@@ -17,7 +17,7 @@ export default class Home extends Component {
 
           <User/>
 
-          <a href="/logout">Log out</a>
+          <a href={process.env.REACT_APP_LOGOUT_PATH}>Log out</a>
 
         </div>
       </Container>
