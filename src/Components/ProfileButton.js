@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
     height: '56px',
     'border-radius': '50%',
     'margin-right': '0.5rem',
+
+    '@media (max-width: 600px)': {
+      width: '48px',
+      height: '48px',
+    },
   },
 
   login: {
@@ -69,6 +74,10 @@ const styles = StyleSheet.create({
     ':hover': {
       color: 'black',
       backgroundColor: 'white',
+    },
+
+    '@media (max-width: 600px)': {
+      'padding': '0.65rem',
     },
   },
 })

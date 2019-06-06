@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import { StyleSheet, css } from 'aphrodite'
@@ -101,24 +101,6 @@ class PostInput extends Component {
       <div className={css(styles.view)}>
 
         <div className={css(styles.postInput)}>
-          {
-            this.props.user.name ? (
-              <Fragment>
-                <div className={css(styles.image)}>
-                  <img
-                    className={css(styles.picture)}
-                    src={ this.props.user.pictureLink }
-                    alt="profile" />
-                </div>
-                <div className={css(styles.name)}>
-                  <div className={css(styles['name-display'])}>
-                    { this.props.user.displayName }
-                  </div>
-                </div>
-              </Fragment>
-            ) : null
-          }
-
           <TextareaAutosize
             className={css(styles.text)}
             value={ this.state.description }
@@ -188,8 +170,6 @@ const styles = StyleSheet.create({
 
     display: 'grid',
     'grid-template-areas': `
-      'image'
-      'name'
       'text'
       'content'
       'services'
@@ -199,28 +179,6 @@ const styles = StyleSheet.create({
     'max-width': '600px',
 
     margin: '0.5rem',
-  },
-
-  // profile picture
-  image: {
-    'grid-area': 'image',
-    'text-align': 'center',
-  },
-  picture: {
-    width: '80px',
-    height: '80px',
-    'border-radius': '50%',
-  },
-
-  // name, handle
-  name: {
-    'grid-area': 'name',
-    'text-align': 'center',
-  },
-  'name-display': {
-    display: 'inline',
-    'font-weight': 'bold',
-    'line-height': '20px',
   },
 
   text: {
@@ -238,51 +196,47 @@ const styles = StyleSheet.create({
 
   content: {
     'grid-area': 'content',
-    border: '7.5px solid black',
     'margin-top': '10px',
     position: 'relative',
     width: '100%',
     'padding-bottom': '50%',
+
+    'box-shadow': '7px 5px 50px -10px rgba(0,0,0,0.63)',
+    'border-radius': '15px',
   },
 
   buttons: {
     width: '100%',
+    'margin-top': '20px',
+
     display: 'flex',
     'flex-direction': 'column',
     'justify-content': 'space-around',
     'align-items': 'center',
   },
 
-  post: {
-  },
-
   postButton: {
-    backgroundColor: 'black',
+    background: 'linear-gradient(-90deg, #CF77F3 0%, #009BFF 47%, #2AC9DB 100%)',
     color: 'white',
     'font-weight': 'bold',
 
-    'margin-top': '1rem',
-    'margin-bottom': '1rem',
-
-    width: '5rem',
-    height: '5rem',
-    'border-radius': '50%',
+    margin: '1.5rem 0',
+    padding: '1rem 2.5rem',
+    'border-radius': '50px',
 
     cursor: 'pointer',
     'transition': '0.3s',
-
     ':hover': {
-      'margin-top': '0.5rem',
-      'margin-bottom': '0.5rem',
-      width: '6rem',
-      height: '6rem',
+      margin: '1.25rem 0',
+      padding: '1.25rem 3rem',
     },
 
-    display: 'flex',
-    'flex-direction': 'column',
-    'justify-content': 'space-around',
+    display: 'inline-block',
   },
   postButtonText: {
+    'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
+    'font-size': '16px',
+    'text-align': 'center',
   },
 
   services: {

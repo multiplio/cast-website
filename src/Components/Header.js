@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     'justify-content': 'space-between',
     'align-items': 'center',
+    '@media (max-width: 600px)': {
+      height: '4rem',
+    },
   },
 
   logoGroup: {
@@ -48,11 +51,17 @@ const styles = StyleSheet.create({
   'logo-image': {
     height: '2.5rem',
     width: 'auto',
+    '@media (max-width: 600px)': {
+      height: '2rem',
+    },
   },
   tag: {
     color: pallete.white,
     'font-size': '20px',
     'margin-top': '12px',
+    '@media (max-width: 600px)': {
+      'font-size': '18px',
+    },
   },
 
   profile: {
