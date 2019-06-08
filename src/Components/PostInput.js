@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import { StyleSheet, css } from 'aphrodite'
 
-import TextareaAutosize from 'react-textarea-autosize'
+import PostStorage from '../States/Post'
 
+import TextareaAutosize from 'react-textarea-autosize'
 import ContentEditor from './ContentEditor'
 
 import twitter from '../Assets/social/twitter.svg'
@@ -15,15 +16,18 @@ import reddit from '../Assets/social/reddit.svg'
 
 const descriptionFontSize = 14
 
+const typingTimeout = 1000 // ms
+
 class PostInput extends Component {
   constructor (props) {
     super(props)
 
     // data
     this.state = {
-      content: '',
+      content: PostStorage.getContent(),
       description: '',
       sendStatus: null,
+      contentTypingTimeout: null,
     }
 
     // refs
@@ -37,6 +41,7 @@ class PostInput extends Component {
     this.post = this.post.bind(this)
     this.descriptionChange = this.descriptionChange.bind(this)
     this.contentChange = this.contentChange.bind(this)
+    this.savePost = this.savePost.bind(this)
   }
 
   focusContent () {
@@ -93,7 +98,29 @@ class PostInput extends Component {
     e && e.target && this.setState({ description: e.target.value })
   }
   contentChange (e) {
-    e && e.target && this.setState({ content: e.target.value })
+    if (e && e.target) {
+      // if timeout running - clear
+      if (this.state.contentTypingTimeout !== null) {
+        clearTimeout(this.state.contentTypingTimeout)
+      }
+
+      // update timeout + start new save timer
+      this.setState({
+        content: e.target.value,
+        contentTypingTimeout: setTimeout(this.savePost, typingTimeout),
+      })
+    }
+  }
+
+  savePost () {
+    PostStorage.setContent(this.state.content)
+
+    if (this.state.contentTypingTimeout) {
+      clearTimeout(this.state.contentTypingTimeout)
+    }
+    this.setState({
+      contentTypingTimeout: null,
+    })
   }
 
   render () {
