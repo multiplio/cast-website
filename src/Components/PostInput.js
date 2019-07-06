@@ -56,7 +56,7 @@ class PostInput extends Component {
     }
 
     // if not logged in -> redirect to login
-    if (!this.user.loggedIn) {
+    if (!this.props.user.loggedIn) {
       window.location.href = process.env.REACT_APP_LOGIN_PATH
     }
 
