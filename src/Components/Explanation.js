@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-import cluster from '../Assets/cluster.svg'
+import ipfs from '../Assets/ipfs-logo-vector-ice-text.svg'
 
 const Explanaition = () => {
   return (
@@ -27,12 +27,18 @@ const Explanaition = () => {
       </section>
 
       <section className={css(styles.storage)}>
-        <img alt="" src={cluster} className={css(styles.storageImg)} />
+        <img alt="" src={ipfs} className={css(styles.storageImg)} />
       </section>
       <section className={css(styles.storageText)}>
         <div>
-          <h1>Safelly Stored</h1>
-          <p>Stored in an immutable distributed global storage, always safe, always available.</p>
+          <h1>Distributed storage</h1>
+          <p>
+            Your post is stored in&nbsp;
+            <a style={{ textDecoration: 'underline' }} href="https://ipfs.io/">
+              interplanetary file system
+            </a>.
+            It&apos;s a distrubuted immutable global storage network, so your post is always safe and always available.
+          </p>
         </div>
       </section>
 
