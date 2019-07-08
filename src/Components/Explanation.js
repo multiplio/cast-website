@@ -2,8 +2,9 @@ import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
 import ipfs from '../Assets/ipfs-logo-vector-ice-text.svg'
+import social from '../Assets/social_media.png'
 
-const Explanaition = () => {
+const Explanation = () => {
   return (
     <div className={css(styles.view)}>
 
@@ -18,16 +19,17 @@ const Explanaition = () => {
         <h1>How?</h1>
       </section>
 
-      <section className={css(styles.post)}>
-      </section>
       <section className={css(styles.postText)}>
         <div>
-          <h1>Post</h1>
+          <h1>Post once</h1>
+          <p>
+            Create your beautiful post in our intuitive designer.
+          </p>
         </div>
       </section>
 
       <section className={css(styles.storage)}>
-        <img alt="" src={ipfs} className={css(styles.storageImg)} />
+        <img alt="" src={ipfs} className={css(styles.image)} />
       </section>
       <section className={css(styles.storageText)}>
         <div>
@@ -37,32 +39,38 @@ const Explanaition = () => {
             <a style={{ textDecoration: 'underline' }} href="https://ipfs.io/">
               interplanetary file system
             </a>.
-            It&apos;s a distrubuted immutable global storage network, so your post is always safe and always available.
+            It&apos;s a distrubuted immutable global storage network,
+            so your data is always safe and always available.
           </p>
         </div>
       </section>
 
       <section className={css(styles.publish)}>
+        <img alt="" src={social} className={css(styles.image)} />
       </section>
       <section className={css(styles.publishText)}>
         <div>
-          <h1>Publish</h1>
+          <h1>Publish anywhere</h1>
+          <p>
+            Link your post to any social network.
+          </p>
         </div>
       </section>
 
-      <section className={css(styles.social)}>
-      </section>
       <section className={css(styles.socialText)}>
         <div>
-          <h1>All Your Social Media</h1>
-          <p>Post once, publish anywhere.</p>
+          <h1>Native view</h1>
+          <p>
+            Your post is displayed in a native view.
+            All the benefits, same experience.
+          </p>
         </div>
       </section>
 
     </div>
   )
 }
-export default Explanaition
+export default Explanation
 
 const styles = StyleSheet.create({
   view: {
@@ -72,15 +80,14 @@ const styles = StyleSheet.create({
     'grid-template': `
       "what what"
       "how how"
-      "post post-text"
+      "post-text post-text"
       "storage-text storage"
       "publish publish-text"
-      "social-text social"
+      "social-text social-text"
     `,
     'grid-template-columns': '50% 50%',
-    'grid-template-rows': '200px 70px 300px 300px',
+    'grid-template-rows': '200px 70px auto',
   },
-
   what: {
     'grid-area': 'what',
     color: 'white',
@@ -89,20 +96,16 @@ const styles = StyleSheet.create({
     'flex-direction': 'column',
     'justify-content': 'space-around',
   },
-
   how: {
     'grid-area': 'how',
   },
 
-  post: {
-    'grid-area': 'post',
-    display: 'grid',
-    'grid-template-columns': '55px 55px 55px 55px',
-    'grid-template-rows': '55px 55px',
-    'grid-gap': '5px 5px',
-    'justify-content': 'center',
-    'align-content': 'center',
+  image: {
+    'align-self': 'center',
+    'max-width': '100%',
+    'height': '100%',
   },
+
   postText: {
     'grid-area': 'post-text',
     padding: '2rem',
@@ -115,17 +118,15 @@ const styles = StyleSheet.create({
   storage: {
     'grid-area': 'storage',
     display: 'flex',
-    padding: '2rem',
+    position: 'relative',
+    padding: '2rem 20%',
     'flex-direction': 'column',
     'align-items': 'center',
     'justify-content': 'space-around',
   },
-  storageImg: {
-    'max-height': '100%',
-  },
   storageText: {
     'grid-area': 'storage-text',
-    padding: '2rem',
+    padding: '0 2rem',
     display: 'flex',
     'align-items': 'center',
     'text-align': 'center',
@@ -135,29 +136,21 @@ const styles = StyleSheet.create({
   publish: {
     'grid-area': 'publish',
     display: 'flex',
-    padding: '2rem',
+    position: 'relative',
+    padding: '0 2rem',
     'flex-direction': 'column',
     'align-items': 'center',
     'justify-content': 'space-around',
   },
   publishText: {
     'grid-area': 'publish-text',
-    padding: '2rem',
+    padding: '0 2rem',
     display: 'flex',
     'align-items': 'center',
     'text-align': 'center',
     'justify-content': 'space-around',
   },
 
-  social: {
-    'grid-area': 'social',
-    display: 'grid',
-    'grid-template-columns': '55px 55px 55px 55px',
-    'grid-template-rows': '55px 55px',
-    'grid-gap': '5px 5px',
-    'justify-content': 'center',
-    'align-content': 'center',
-  },
   socialText: {
     'grid-area': 'social-text',
     padding: '2rem',
