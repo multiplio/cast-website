@@ -29,7 +29,9 @@ const Explanation = () => {
       </section>
 
       <section className={css(styles.storage)}>
-        <img alt="" src={ipfs} className={css(styles.image)} />
+        <div className={css(styles.image)}>
+          <img alt="" src={ipfs} />
+        </div>
       </section>
       <section className={css(styles.storageText)}>
         <div>
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
       "social-text social-text"
     `,
     'grid-template-columns': '50% 50%',
-    'grid-template-rows': '200px 70px auto',
+    'grid-template-rows': '200px 100px auto',
   },
   what: {
     'grid-area': 'what',
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
 
   postText: {
     'grid-area': 'post-text',
-    padding: '2rem',
+    padding: '0 2rem',
     display: 'flex',
     'align-items': 'center',
     'text-align': 'center',
@@ -119,14 +121,14 @@ const styles = StyleSheet.create({
     'grid-area': 'storage',
     display: 'flex',
     position: 'relative',
-    padding: '0 20%',
+    padding: '3rem 25%',
     'flex-direction': 'column',
     'align-items': 'center',
     'justify-content': 'space-around',
   },
   storageText: {
     'grid-area': 'storage-text',
-    padding: '0 2rem',
+    padding: '2rem',
     display: 'flex',
     'align-items': 'center',
     'text-align': 'center',
@@ -137,14 +139,14 @@ const styles = StyleSheet.create({
     'grid-area': 'publish',
     display: 'flex',
     position: 'relative',
-    padding: '0 2rem',
+    padding: '2rem',
     'flex-direction': 'column',
     'align-items': 'center',
     'justify-content': 'space-around',
   },
   publishText: {
     'grid-area': 'publish-text',
-    padding: '0 2rem',
+    padding: '2rem',
     display: 'flex',
     'align-items': 'center',
     'text-align': 'center',
