@@ -46,7 +46,9 @@ const Explanation = () => {
       </section>
 
       <section className={css(styles.publish)}>
-        <img alt="" src={social} className={css(styles.image)} />
+        <div className={css(styles.image)}>
+          <img alt="" src={social} />
+        </div>
       </section>
       <section className={css(styles.publishText)}>
         <div>
@@ -102,8 +104,6 @@ const styles = StyleSheet.create({
 
   image: {
     'align-self': 'center',
-    'max-width': '100%',
-    'height': '100%',
   },
 
   postText: {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     'grid-area': 'storage',
     display: 'flex',
     position: 'relative',
-    padding: '2rem 20%',
+    padding: '0 20%',
     'flex-direction': 'column',
     'align-items': 'center',
     'justify-content': 'space-around',
