@@ -5,16 +5,11 @@ import { StyleSheet, css } from 'aphrodite'
 
 import PostStorage from '../States/Post'
 
-import TextareaAutosize from 'react-textarea-autosize'
 import ContentEditor from './ContentEditor'
 
 import twitter from '../Assets/social/twitter.svg'
 import facebook from '../Assets/social/facebook.svg'
 import reddit from '../Assets/social/reddit.svg'
-
-// import pallete from '../Styles/pallete'
-
-const descriptionFontSize = 14
 
 const typingTimeout = 1000 // ms
 
@@ -25,7 +20,6 @@ class PostInput extends Component {
     // data
     this.state = {
       content: PostStorage.getContent(),
-      description: '',
       sendStatus: null,
       contentTypingTimeout: null,
     }
@@ -39,7 +33,6 @@ class PostInput extends Component {
     // method bindings
     this.focusContent = this.focusContent.bind(this)
     this.post = this.post.bind(this)
-    this.descriptionChange = this.descriptionChange.bind(this)
     this.contentChange = this.contentChange.bind(this)
     this.savePost = this.savePost.bind(this)
   }
@@ -63,7 +56,7 @@ class PostInput extends Component {
     // create post
     const body = JSON.stringify({
       text: this.state.content || '',
-      desc: this.state.description || '',
+      desc: '',
       fontSize: 22,
       spacing: 1.5,
     })
@@ -83,7 +76,6 @@ class PostInput extends Component {
 
         this.setState({
           sendStatus: 'sent',
-          description: '',
           content: '',
         })
       })
@@ -94,9 +86,6 @@ class PostInput extends Component {
       })
   }
 
-  descriptionChange (e) {
-    e && e.target && this.setState({ description: e.target.value })
-  }
   contentChange (e) {
     if (e && e.target) {
       // if timeout running - clear
@@ -128,17 +117,6 @@ class PostInput extends Component {
       <div className={css(styles.view)}>
 
         <div className={css(styles.postInput)}>
-          <TextareaAutosize
-            className={css(styles.text)}
-            value={ this.state.description }
-            onChange={ this.descriptionChange }
-            disabled={!this.props.edit}
-            placeholder={'Description'}
-            minRows={1}
-            maxRows={5}
-            style={{ fontSize: descriptionFontSize }}
-          />
-
           <div className={css(styles.content)} onClick={this.focusContent}>
             <ContentEditor
               value={ this.state.content }
@@ -197,7 +175,6 @@ const styles = StyleSheet.create({
 
     display: 'grid',
     'grid-template-areas': `
-      'text'
       'content'
       'services'
     `,
@@ -206,19 +183,6 @@ const styles = StyleSheet.create({
     'max-width': '600px',
 
     margin: '0.5rem',
-  },
-
-  text: {
-    display: 'none',
-    'grid-area': 'text',
-    'text-align': 'left',
-    'font-size': descriptionFontSize + 'px',
-    border: 'none',
-    margin: '4px 0 0 0',
-    padding: 0,
-    resize: 'none',
-    outline: 'none',
-    overflow: 'hidden',
   },
 
   content: {
