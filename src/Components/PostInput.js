@@ -49,7 +49,7 @@ class PostInput extends Component {
   }
 
   post () {
-    if (this.state.content === null) {
+    if (this.state.content === null || this.state.content === '') {
       return
     }
     // if not logged in -> redirect to login
@@ -78,7 +78,7 @@ class PostInput extends Component {
         }
 
         this.setState({
-          sendStatus: 'sent',
+          sendStatus: 'Published successfully.',
           sendPromise: null,
           content: '',
         })
@@ -147,7 +147,7 @@ class PostInput extends Component {
         {
           this.props.edit &&
           <SendButton
-            className={css(styles.buttons)}
+            style={styles.buttons}
             statusText={this.state.sendStatus}
             loading={this.state.sendPromise !== null}
             onClick={this.post}

@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite'
 
 import Spinner from './Spinner'
 
-const SendButton = ({ statusText, loading, onClick, ...rest }) => {
+const SendButton = ({ statusText, loading, onClick, style, ...rest }) => {
   if (loading) {
     return (
       <div {...rest}>
@@ -14,12 +14,12 @@ const SendButton = ({ statusText, loading, onClick, ...rest }) => {
   }
 
   return (
-    <div {...rest}>
+    <div className={css(style, styles.container)} {...rest}>
 
       <div className={css(styles.buttons)}>
         <div className={css(styles.postButton)} onClick={onClick}>
           <div className={css(styles.postButtonText)}>
-            Post
+            Publish
           </div>
         </div>
       </div>
@@ -35,10 +35,15 @@ SendButton.propTypes = {
   statusText: PropTypes.string,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
+  style: PropTypes.object,
 }
 export default SendButton
 
 const styles = StyleSheet.create({
+  container: {
+    transition: '500ms',
+  },
+
   buttons: {
     width: '100%',
 
@@ -58,7 +63,7 @@ const styles = StyleSheet.create({
     'border-radius': '50px',
 
     cursor: 'pointer',
-    'transition': '0.3s',
+    transition: '0.3s',
     ':hover': {
       margin: '1.25rem 0',
       padding: '1.25rem 3rem',
