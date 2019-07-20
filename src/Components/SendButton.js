@@ -5,31 +5,31 @@ import { StyleSheet, css } from 'aphrodite'
 import Spinner from './Spinner'
 
 const SendButton = ({ statusText, loading, onClick, ...rest }) => {
-    if (loading) {
-      return (
-        <div {...rest}>
-          <Spinner size={50} color={'#000'} />
-        </div>
-      )
-    }
-
+  if (loading) {
     return (
       <div {...rest}>
-
-        <div className={css(styles.buttons)}>
-          <div className={css(styles.postButton)} onClick={onClick}>
-            <div className={css(styles.postButtonText)}>
-              Post
-            </div>
-          </div>
-        </div>
-
-        <div>
-          { (statusText !== null || statusText !== '') && statusText }
-        </div>
-
+        <Spinner size={50} color={'#000'} />
       </div>
     )
+  }
+
+  return (
+    <div {...rest}>
+
+      <div className={css(styles.buttons)}>
+        <div className={css(styles.postButton)} onClick={onClick}>
+          <div className={css(styles.postButtonText)}>
+            Post
+          </div>
+        </div>
+      </div>
+
+      <div>
+        { (statusText !== null || statusText !== '') && statusText }
+      </div>
+
+    </div>
+  )
 }
 SendButton.propTypes = {
   statusText: PropTypes.string,

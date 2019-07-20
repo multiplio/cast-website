@@ -1,10 +1,15 @@
 module.exports = {
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "plugin:react/recommended"
+  ],
   "env": {
     "browser": true,
     "es6": true,
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
@@ -19,11 +24,6 @@ module.exports = {
     "react/jsx-uses-vars": "error",
 		"operator-linebreak": "off",
   },
-  "extends": [
-    "eslint:recommended",
-    "standard",
-    "plugin:react/recommended"
-  ],
   "plugins": [
     "react"
   ],

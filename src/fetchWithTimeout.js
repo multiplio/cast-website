@@ -1,4 +1,4 @@
-function fetchWithTimeout(url, options, timeout) {
+function fetchWithTimeout (url, options, timeout) {
   return new Promise((resolve, reject) => {
     // Set timeout timer
     let timer = setTimeout(
