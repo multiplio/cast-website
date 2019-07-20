@@ -6,12 +6,16 @@ import { StyleSheet, css } from 'aphrodite'
 import PostStorage from '../States/Post'
 
 import ContentEditor from './ContentEditor'
+import SendButton from './SendButton'
 
 import twitter from '../Assets/social/twitter.svg'
 import facebook from '../Assets/social/facebook.svg'
 import reddit from '../Assets/social/reddit.svg'
 
+import fetchWithTimeout from '../fetchWithTimeout'
+
 const typingTimeout = 1000 // ms
+const requestTimeout = 7000 // ms
 
 class PostInput extends Component {
   constructor (props) {
@@ -20,7 +24,8 @@ class PostInput extends Component {
     // data
     this.state = {
       content: PostStorage.getContent(),
-      sendStatus: null,
+      sendStatus: '',
+      sendPromise: null,
       contentTypingTimeout: null,
     }
 
@@ -44,10 +49,9 @@ class PostInput extends Component {
   }
 
   post () {
-    if (this.postText === null) {
+    if (this.state.content === null) {
       return
     }
-
     // if not logged in -> redirect to login
     if (!this.props.user.loggedIn) {
       window.location.href = process.env.REACT_APP_LOGIN_PATH
@@ -60,15 +64,14 @@ class PostInput extends Component {
       fontSize: 22,
       spacing: 1.5,
     })
-
     // submit post
-    fetch(process.env.REACT_APP_POST_PATH, {
+    const request = fetchWithTimeout(process.env.REACT_APP_POST_PATH, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: body,
-    })
+    }, requestTimeout)
       .then(response => {
         if (response.status !== 200) {
           throw Error(response.status)
@@ -76,14 +79,20 @@ class PostInput extends Component {
 
         this.setState({
           sendStatus: 'sent',
+          sendPromise: null,
           content: '',
         })
       })
       .catch(code => {
         this.setState({
           sendStatus: code + ' : error sending post, please try again',
+          sendPromise: null,
         })
       })
+    // set sending status
+    this.setState({
+      sendPromise: request,
+    })
   }
 
   contentChange (e) {
@@ -97,6 +106,7 @@ class PostInput extends Component {
       this.setState({
         content: e.target.value,
         contentTypingTimeout: setTimeout(this.savePost, typingTimeout),
+        sendStatus: '',
       })
     }
   }
@@ -133,24 +143,15 @@ class PostInput extends Component {
           <img alt="" src={reddit} className={css(styles.socialImage)} />
         </div>
 
-        <div className={css(styles.buttons)}>
-          {
-            this.props.edit === true
-              ?
-              (
-                <div className={css(styles.postButton)} onClick={ this.post }>
-                  <div className={css(styles.postButtonText)}>
-                    Post
-                  </div>
-                </div>
-              )
-              : null
-          }
-        </div>
-
-        <div>
-          { this.state.sendStatus }
-        </div>
+        {
+          this.props.edit &&
+          <SendButton
+            className={css(styles.buttons)}
+            statusText={this.state.sendStatus}
+            loading={this.state.sendPromise !== null}
+            onClick={this.post}
+          />
+        }
 
       </div>
     )
@@ -204,30 +205,6 @@ const styles = StyleSheet.create({
     'flex-direction': 'column',
     'justify-content': 'space-around',
     'align-items': 'center',
-  },
-
-  postButton: {
-    background: 'linear-gradient(-90deg, #CF77F3 0%, #009BFF 47%, #2AC9DB 100%)',
-    color: 'white',
-    'font-weight': 'bold',
-
-    margin: '1.5rem 0',
-    padding: '1rem 2.5rem',
-    'border-radius': '50px',
-
-    cursor: 'pointer',
-    'transition': '0.3s',
-    ':hover': {
-      margin: '1.25rem 0',
-      padding: '1.25rem 3rem',
-    },
-
-    display: 'inline-block',
-  },
-  postButtonText: {
-    'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    'font-size': '16px',
-    'text-align': 'center',
   },
 
   services: {
