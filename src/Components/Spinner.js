@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
     'border-right-color': 'transparent',
     'border-radius': '50%',
 
+    margin: '1rem, 0',
+
     animationName: [keyframes],
     animationDuration: '0.75s',
     animationIterationCount: 'infinite',

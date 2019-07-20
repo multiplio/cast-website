@@ -6,7 +6,11 @@ import Spinner from './Spinner'
 
 const SendButton = ({ statusText, loading, onClick, ...rest }) => {
     if (loading) {
-      return <Spinner />
+      return (
+        <div {...rest}>
+          <Spinner size={50} color={'#000'} />
+        </div>
+      )
     }
 
     return (
@@ -37,7 +41,6 @@ export default SendButton
 const styles = StyleSheet.create({
   buttons: {
     width: '100%',
-    'margin-top': '20px',
 
     display: 'flex',
     'flex-direction': 'column',
