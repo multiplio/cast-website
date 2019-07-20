@@ -24,6 +24,9 @@ class Post {
       }
     }
   }
+  clearContent () {
+    this.setContent('')
+  }
 }
 const post = new Post()
 export default post

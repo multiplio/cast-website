@@ -82,10 +82,11 @@ class PostInput extends Component {
           sendPromise: null,
           content: '',
         })
+        PostStorage.clearContent()
       })
-      .catch(code => {
+      .catch(error => {
         this.setState({
-          sendStatus: code + ' : error sending post, please try again',
+          sendStatus: error.message + ', please try again.',
           sendPromise: null,
         })
       })
