@@ -5,18 +5,17 @@ import { StyleSheet, css } from 'aphrodite'
 
 import PostStorage from '../States/Post'
 
-import TextareaAutosize from 'react-textarea-autosize'
 import ContentEditor from './ContentEditor'
+import SendButton from './SendButton'
 
 import twitter from '../Assets/social/twitter.svg'
 import facebook from '../Assets/social/facebook.svg'
 import reddit from '../Assets/social/reddit.svg'
 
-// import pallete from '../Styles/pallete'
-
-const descriptionFontSize = 14
+import fetchWithTimeout from '../fetchWithTimeout'
 
 const typingTimeout = 1000 // ms
+const requestTimeout = 7000 // ms
 
 class PostInput extends Component {
   constructor (props) {
@@ -25,8 +24,8 @@ class PostInput extends Component {
     // data
     this.state = {
       content: PostStorage.getContent(),
-      description: '',
-      sendStatus: null,
+      sendStatus: '',
+      sendPromise: null,
       contentTypingTimeout: null,
     }
 
@@ -39,7 +38,6 @@ class PostInput extends Component {
     // method bindings
     this.focusContent = this.focusContent.bind(this)
     this.post = this.post.bind(this)
-    this.descriptionChange = this.descriptionChange.bind(this)
     this.contentChange = this.contentChange.bind(this)
     this.savePost = this.savePost.bind(this)
   }
@@ -51,10 +49,9 @@ class PostInput extends Component {
   }
 
   post () {
-    if (this.postText === null) {
+    if (this.state.content === null || this.state.content === '') {
       return
     }
-
     // if not logged in -> redirect to login
     if (!this.props.user.loggedIn) {
       window.location.href = process.env.REACT_APP_LOGIN_PATH
@@ -63,40 +60,42 @@ class PostInput extends Component {
     // create post
     const body = JSON.stringify({
       text: this.state.content || '',
-      desc: this.state.description || '',
+      desc: '',
       fontSize: 22,
       spacing: 1.5,
     })
-
     // submit post
-    fetch(process.env.REACT_APP_POST_PATH, {
+    const request = fetchWithTimeout(process.env.REACT_APP_POST_PATH, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: body,
-    })
+    }, requestTimeout)
       .then(response => {
         if (response.status !== 200) {
           throw Error(response.status)
         }
 
         this.setState({
-          sendStatus: 'sent',
-          description: '',
+          sendStatus: 'Published successfully.',
+          sendPromise: null,
           content: '',
         })
+        PostStorage.clearContent()
       })
-      .catch(code => {
+      .catch(error => {
         this.setState({
-          sendStatus: code + ' : error sending post, please try again',
+          sendStatus: error.message + ', please try again.',
+          sendPromise: null,
         })
       })
+    // set sending status
+    this.setState({
+      sendPromise: request,
+    })
   }
 
-  descriptionChange (e) {
-    e && e.target && this.setState({ description: e.target.value })
-  }
   contentChange (e) {
     if (e && e.target) {
       // if timeout running - clear
@@ -108,6 +107,7 @@ class PostInput extends Component {
       this.setState({
         content: e.target.value,
         contentTypingTimeout: setTimeout(this.savePost, typingTimeout),
+        sendStatus: '',
       })
     }
   }
@@ -128,17 +128,6 @@ class PostInput extends Component {
       <div className={css(styles.view)}>
 
         <div className={css(styles.postInput)}>
-          <TextareaAutosize
-            className={css(styles.text)}
-            value={ this.state.description }
-            onChange={ this.descriptionChange }
-            disabled={!this.props.edit}
-            placeholder={'Description'}
-            minRows={1}
-            maxRows={5}
-            style={{ fontSize: descriptionFontSize }}
-          />
-
           <div className={css(styles.content)} onClick={this.focusContent}>
             <ContentEditor
               value={ this.state.content }
@@ -155,24 +144,15 @@ class PostInput extends Component {
           <img alt="" src={reddit} className={css(styles.socialImage)} />
         </div>
 
-        <div className={css(styles.buttons)}>
-          {
-            this.props.edit === true
-              ?
-              (
-                <div className={css(styles.postButton)} onClick={ this.post }>
-                  <div className={css(styles.postButtonText)}>
-                    Post
-                  </div>
-                </div>
-              )
-              : null
-          }
-        </div>
-
-        <div>
-          { this.state.sendStatus }
-        </div>
+        {
+          this.props.edit &&
+          <SendButton
+            style={styles.buttons}
+            statusText={this.state.sendStatus}
+            loading={this.state.sendPromise !== null}
+            onClick={this.post}
+          />
+        }
 
       </div>
     )
@@ -197,7 +177,6 @@ const styles = StyleSheet.create({
 
     display: 'grid',
     'grid-template-areas': `
-      'text'
       'content'
       'services'
     `,
@@ -206,19 +185,6 @@ const styles = StyleSheet.create({
     'max-width': '600px',
 
     margin: '0.5rem',
-  },
-
-  text: {
-    display: 'none',
-    'grid-area': 'text',
-    'text-align': 'left',
-    'font-size': descriptionFontSize + 'px',
-    border: 'none',
-    margin: '4px 0 0 0',
-    padding: 0,
-    resize: 'none',
-    outline: 'none',
-    overflow: 'hidden',
   },
 
   content: {
@@ -240,30 +206,6 @@ const styles = StyleSheet.create({
     'flex-direction': 'column',
     'justify-content': 'space-around',
     'align-items': 'center',
-  },
-
-  postButton: {
-    background: 'linear-gradient(-90deg, #CF77F3 0%, #009BFF 47%, #2AC9DB 100%)',
-    color: 'white',
-    'font-weight': 'bold',
-
-    margin: '1.5rem 0',
-    padding: '1rem 2.5rem',
-    'border-radius': '50px',
-
-    cursor: 'pointer',
-    'transition': '0.3s',
-    ':hover': {
-      margin: '1.25rem 0',
-      padding: '1.25rem 3rem',
-    },
-
-    display: 'inline-block',
-  },
-  postButtonText: {
-    'font-family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    'font-size': '16px',
-    'text-align': 'center',
   },
 
   services: {

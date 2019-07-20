@@ -1,7 +1,6 @@
 {
-  "name": "notatweet",
-  "version": "0.1.0",
-  "private": true,
+  "name": "cast",
+  "version": "1.5.0",
   "dependencies": {
     "aphrodite": "^2.2.3",
     "history": "^4.9.0",
